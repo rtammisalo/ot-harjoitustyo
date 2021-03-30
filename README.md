@@ -14,5 +14,5 @@ Tässä on _hieman_ esimerkkitekstiä, kuten __haluttiin__. Vielä oudompaa. Out
 ## Määrittelydokumentti
 [Vaatimusmäärittely](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
-## Tuntiaikakirjanpito
+## Tuntikirjanpito
 [Tunnit](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/tunnit.md)
