@@ -12,7 +12,7 @@ Sovelluksella on aluksi vain tavallisia käyttäjätilejä. Käyttäjä voidaan 
 ## Käyttöliittymä
 Alla kuvassa piirrettynä kevyt luonnos sovelluksen graafisesta käyttöliittymästä.
 
-Kuva tähän.
+![Luonnos](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/uiluonnos.png)
 
 ## Sovelluksen ominaisuudet
 
