@@ -1,27 +1,18 @@
 from tkinter import ttk, constants, StringVar
 from ui.base import BaseView
-from services.main_service import InvalidPasswordException, InvalidUserException
-
+from ui import constants as ui_constants
 
 class CreateUserView(BaseView):
-    def __init__(self, window, main_service, show_login, show_exercises):
-        super().__init__(window)
-        self._show_login = show_login
-        self._show_exercises = show_exercises
-        self._main_service = main_service
+    def __init__(self, window, main_service, login_handlers):
+        super().__init__(window, main_service)
+        self._show_login = login_handlers[ui_constants.LOGIN_VIEW]
+        self._login_handler = login_handlers[ui_constants.LOGIN_HANDLER]
         self._init_frame()
 
     def _create_user_handler(self):
-        username = self._username_entry.get()
-        password = self._password_entry.get()
-
-        try:
-            self._main_service.create(username, password)
-            self._show_exercises()
-        except InvalidUserException as error:
-            self._show_error_message(error)
-        except InvalidPasswordException as error:
-            self._show_error_message(error)
+        self._login_handler(self._username_entry.get(), self._password_entry.get(),
+                            self._main_service.create,
+                            self._show_error_message)
 
     def _show_error_message(self, message):
         self._error_message.set(message)
@@ -61,5 +52,3 @@ class CreateUserView(BaseView):
         self._password_entry.grid(pady=(0, 20), padx=10)
         create_button.grid(sticky=constants.EW, pady=5, padx=5)
         back_button.grid(sticky=constants.EW, pady=5, padx=5)
-
-        frame_header_label.grid(sticky=constants.N, pady=(5, 15))

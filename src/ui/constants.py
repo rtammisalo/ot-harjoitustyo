@@ -1,0 +1,8 @@
+MULTIPLICATION = "multiplication"
+DIVISION = "division"
+ADDITION = "addition"
+SUBSTRACTION = "substraction"
+LOGIN_VIEW = "login_view"
+EXERCISES_VIEW = "exercises_view"
+LOGIN_HANDLER = "login_handler"
+CREATE_USER_VIEW = "create_user_view"

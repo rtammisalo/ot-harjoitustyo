@@ -2,6 +2,7 @@ from tkinter import Tk
 from ui.ui import UI
 from services.main_service import MainService
 
+
 def main():
     window = Tk()
     window.title("Arithmetician")

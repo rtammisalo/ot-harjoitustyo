@@ -1,26 +1,19 @@
 from tkinter import ttk, constants, StringVar
 from ui.base import BaseView
-from services.main_service import InvalidPasswordException, InvalidUserException
+from ui import constants as ui_constants
 
 class LoginView(BaseView):
-    def __init__(self, window, main_service, show_create_new_user, show_exercises):
-        super().__init__(window)
-        self._show_create_new_user = show_create_new_user
-        self._show_exercises = show_exercises
-        self._main_service = main_service
+    def __init__(self, window, main_service, login_handlers):
+        super().__init__(window, main_service)
+        self._show_create_new_user = login_handlers[ui_constants.CREATE_USER_VIEW]
+        self._login_handler = login_handlers[ui_constants.LOGIN_HANDLER]
         self._init_frame()
 
-    def _login_handler(self):
-        username = self._username_entry.get()
-        password = self._password_entry.get()
-
-        try:
-            self._main_service.login(username, password)
-            self._show_exercises()
-        except InvalidUserException as error:
-            self._show_error_message(error)
-        except InvalidPasswordException as error:
-            self._show_error_message(error)
+    def _login(self):
+        self._login_handler(self._username_entry.get(),
+                            self._password_entry.get(),
+                            self._main_service.login,
+                            self._show_error_message)
 
     def _show_error_message(self, message):
         self._error_message.set(message)
@@ -45,7 +38,7 @@ class LoginView(BaseView):
         login_button = ttk.Button(
             master=self._frame,
             text="Login",
-            command=self._login_handler)
+            command=self._login)
 
         create_new_user_button = ttk.Button(
             master=self._frame,

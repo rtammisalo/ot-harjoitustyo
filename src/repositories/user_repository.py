@@ -1,8 +1,9 @@
 from entities.user import User
 
+
 class UserRepository:
     def __init__(self):
-        self._users = {}
+        self._users = {"aaa":"aaa"}
 
     def get_user(self, username):
         return User(username, self._users[username]) if username in self._users else None
@@ -16,5 +17,3 @@ class UserRepository:
 
     def _new_user(self, username, password):
         return User(username, password)
-
-        

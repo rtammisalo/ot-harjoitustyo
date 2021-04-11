@@ -1,11 +1,13 @@
-from entities.user import User
 from repositories.user_repository import UserRepository
+
 
 class InvalidPasswordException(Exception):
     pass
 
+
 class InvalidUserException(Exception):
     pass
+
 
 class MainService:
     def __init__(self):
@@ -22,17 +24,24 @@ class MainService:
             raise InvalidPasswordException("Invalid password")
 
         self._logged_user = user
-    
+
+    def logout(self):
+        if self._logged_user:
+            self._logged_user = None
+
     def create(self, username, password):
         if not username or len(username) < 3:
             raise InvalidUserException("Username too short")
-            
+
         if not password or len(password) < 3:
             raise InvalidPasswordException("Password is too short")
 
         user = self._user_repository.create_user(username, password)
-        
+
         if not user:
             raise InvalidUserException("Username is already in use")
-        
+
         self._logged_user = user
+
+    def show_current_user(self):
+        return self._logged_user
