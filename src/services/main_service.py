@@ -1,4 +1,5 @@
 from repositories.user_repository import UserRepository
+from services.arithmetic_service import ArithmeticService
 
 
 class InvalidPasswordException(Exception):
@@ -13,6 +14,7 @@ class MainService:
     def __init__(self):
         self._logged_user = None
         self._user_repository = UserRepository()
+        self.arithmetic = ArithmeticService()
 
     def login(self, username, password):
         user = self._user_repository.get_user(username)

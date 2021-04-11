@@ -8,6 +8,7 @@ def main():
     window.title("Arithmetician")
     gui = UI(window, MainService())
     gui.start()
+    window.geometry("350x350")
     window.mainloop()
 
 

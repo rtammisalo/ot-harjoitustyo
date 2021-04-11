@@ -2,6 +2,7 @@ from tkinter import ttk, constants, StringVar
 from ui.base import BaseView
 from ui import constants as ui_constants
 
+
 class LoginView(BaseView):
     def __init__(self, window, main_service, login_handlers):
         super().__init__(window, main_service)
@@ -33,7 +34,9 @@ class LoginView(BaseView):
             master=self._frame, text="Enter password:")
 
         self._username_entry = ttk.Entry(master=self._frame)
+        self._username_entry.bind("<Return>", lambda event: self._login())
         self._password_entry = ttk.Entry(master=self._frame)
+        self._password_entry.bind("<Return>", lambda event: self._login())
 
         login_button = ttk.Button(
             master=self._frame,
@@ -59,3 +62,5 @@ class LoginView(BaseView):
         create_new_user_button.grid(sticky=constants.EW, pady=5, padx=5)
 
         self._frame.grid_columnconfigure(0, weight=1, minsize=200)
+
+        self._username_entry.focus()

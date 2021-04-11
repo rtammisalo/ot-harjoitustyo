@@ -2,6 +2,7 @@ from tkinter import ttk, constants, StringVar
 from ui.base import BaseView
 from ui import constants as ui_constants
 
+
 class CreateUserView(BaseView):
     def __init__(self, window, main_service, login_handlers):
         super().__init__(window, main_service)
@@ -32,7 +33,11 @@ class CreateUserView(BaseView):
             master=self._frame, text="Enter new password")
 
         self._username_entry = ttk.Entry(master=self._frame)
+        self._username_entry.bind(
+            "<Return>", lambda event: self._create_user_handler())
         self._password_entry = ttk.Entry(master=self._frame)
+        self._password_entry.bind(
+            "<Return>", lambda event: self._create_user_handler())
 
         self._error_message = StringVar(self._frame)
         self._error_label = ttk.Label(
@@ -52,3 +57,5 @@ class CreateUserView(BaseView):
         self._password_entry.grid(pady=(0, 20), padx=10)
         create_button.grid(sticky=constants.EW, pady=5, padx=5)
         back_button.grid(sticky=constants.EW, pady=5, padx=5)
+
+        self._username_entry.focus()

@@ -25,17 +25,23 @@ class ExercisesView(BaseView):
         exercises_frame.grid(pady=10, padx=5)
         logout_button.grid(pady=10, padx=5)
 
+        self._frame.focus()
+        self._frame.bind(
+            "1", lambda event: self._exercise_handlers[ui_constants.MULTIPLICATION]())
+
     def _create_exercises_frame(self):
         exercises_frame = ttk.Frame(
             master=self._frame, borderwidth=2, relief="ridge")
 
         multiplication_button = ttk.Button(
-            master=exercises_frame, text="Multiplication",
+            master=exercises_frame, text="(1) Multiplication",
             command=self._exercise_handlers[ui_constants.MULTIPLICATION])
-        addition_button = ttk.Button(master=exercises_frame, text="Addition")
+        addition_button = ttk.Button(
+            master=exercises_frame, text="Unimplemented")
         substraction_button = ttk.Button(
-            master=exercises_frame, text="Substraction")
-        division_button = ttk.Button(master=exercises_frame, text="Division")
+            master=exercises_frame, text="Unimplemented")
+        division_button = ttk.Button(
+            master=exercises_frame, text="Unimplemented")
 
         multiplication_button.grid(column=0, pady=5, padx=5)
         division_button.grid(row=0, column=1, pady=5, padx=5)
