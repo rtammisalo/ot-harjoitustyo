@@ -1,15 +1,25 @@
-# Ohjelmistotekniikka
+# Ohjelmistotekniikan harjoitustyö
+## Sovellus
+Sovellus on aritmetiikan harjoitustyökalu. Käyttäjä voi harjoitella kerto-, jako-, yhteen- ja vähennyslaskuja satunnaisilla tehtävillä. Käyttäjä voi myös muuttaa tehtävien asetuksia.
 
-## Laskarit
-### Viikko 1
-Tässä on _hieman_ esimerkkitekstiä, kuten __haluttiin__. Vielä oudompaa. Outo paikallinen muutos, en tiedä miksi.
+Tällä hetkellä on vain toteutettu sisäänkirjautuminen ja kertolasku ilman asetuksien vaihtamista.
 
-[gitlog.txt](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+## Asennusohjeet
 
-[komentorivi.txt](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+Asennus ohjeet ovat samat kuin referenssisovelluksessa, mutta kirjataan ne ylös:
+```bash
+poetry install
+```
+Käynnistykseen ei tarvita build komentoja vielä:
+```bash
+poetry run invoke start
+``` 
 
-### Viikko 2
-![Coverage screenshot](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/laskarit/viikko2/coverage.png)
+Testaus ja testikattavuus:
+```bash
+poetry run invoke test
+poetry run invoke coverage-report
+```
 
 ## Määrittelydokumentti
 [Vaatimusmäärittely](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
