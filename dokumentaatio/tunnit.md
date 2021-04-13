@@ -10,4 +10,5 @@
 | 10.4.2021 | 8    | Lisää vääntöä tkinterin ja VSC:n kanssa, pylint sekoilua yms. Ohjelman kirjautumisnäkymät saatu kasaan |
 | 11.4.2021 | 6    | Toimivan kertolaskuharjoituksen toteutus, refaktorointia |
 | 13.4.2021 | 2    | Käyttäjäkirjautumisen testit, invoken tasks.py kuntoon vaaditulle tasolle ja VMware seikkailua yliopistolla. |
-| yhteensä   | 26.5| |
+| 13.4.2021 | .5   | README:n muokkaus |
+| yhteensä  | 27  | |
