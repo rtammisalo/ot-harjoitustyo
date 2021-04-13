@@ -6,11 +6,13 @@ Tällä hetkellä on vain toteutettu sisäänkirjautuminen ja kertolasku ilman a
 
 ## Asennusohjeet
 
-Asennus ohjeet ovat samat kuin referenssisovelluksessa, mutta kirjataan ne ylös:
 ```bash
 poetry install
 ```
-Käynnistykseen ei tarvita build komentoja vielä:
+
+## Käyttöohjeet
+
+Ohjelma ei vielä tallenna mitään tietokantaan, joten ei tarvita erillisiä `build` komentoja. Aja ohjelma komennolla:
 ```bash
 poetry run invoke start
 ``` 
