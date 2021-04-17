@@ -11,10 +11,9 @@ class InvalidUserException(Exception):
 
 
 class MainService:
-    def __init__(self):
+    def __init__(self, user_repository):
         self._logged_user = None
-        # Hardcode this in for now, since we don't have a db.
-        self._user_repository = UserRepository()
+        self._user_repository = user_repository
         self.arithmetic = ArithmeticService()
 
     def login(self, username, password):
