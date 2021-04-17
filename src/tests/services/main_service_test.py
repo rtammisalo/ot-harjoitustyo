@@ -1,5 +1,7 @@
 import unittest
 from services.main_service import MainService, InvalidUserException, InvalidPasswordException
+from repositories.user_repository import UserRepository
+from database import Database
 
 
 class TestMainService(unittest.TestCase):
@@ -7,7 +9,9 @@ class TestMainService(unittest.TestCase):
     TEST_USER_PASSWORD = "test_password"
 
     def setUp(self):
-        self._service = MainService()
+        database = Database()
+        database.init_database()
+        self._service = MainService(UserRepository(database))
         self._service.create(TestMainService.TEST_USER_NAME,
                              TestMainService.TEST_USER_PASSWORD)
         self._service.logout()
