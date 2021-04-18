@@ -3,3 +3,5 @@ htmlcov
 __pycache__
 .vscode
 data/*.sqlite
+data/users/*
+data/testusers/*

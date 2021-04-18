@@ -1,4 +1,3 @@
-from repositories.user_repository import UserRepository
 from services.arithmetic_service import ArithmeticService
 
 

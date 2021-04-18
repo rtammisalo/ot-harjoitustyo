@@ -1,10 +1,15 @@
-from entities.user import User
 import sqlite3
+from entities.user import User
+from config import Config
+from repositories.settings_repository import SettingsRepository
 
 
 class UserRepository:
-    def __init__(self, database):
+    def __init__(self, database,
+                 settings_repository=SettingsRepository(Config.USER_DEFAULT_CSV_FILEPATH,
+                                                        Config.USER_CSV_PATH)):
         self._database = database
+        self._settings_repository = settings_repository
 
     def get_user(self, username):
         cursor = self._database.connection.cursor()
@@ -31,4 +36,6 @@ class UserRepository:
         if not row_result:
             return None
 
-        return User(row_result["username"], row_result["password"], row_result["id"])
+        user_settings = self._settings_repository.get_settings_by_username(
+            row_result["username"])
+        return User(row_result["username"], row_result["password"], row_result["id"], user_settings)

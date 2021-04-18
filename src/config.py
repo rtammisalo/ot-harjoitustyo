@@ -6,6 +6,9 @@ class Config:
     DATA_DIRECTORY = "data"
     DB_FILENAME = "db.sqlite"
     DB_FILEPATH = ""
+    USER_CSV_PATH = "users"
+    USER_DEFAULT_CSV_FILENAME = "default_user.csv"
+    USER_DEFAULT_CSV_FILEPATH = ""
 
     @classmethod
     def init(cls):
@@ -17,6 +20,15 @@ class Config:
 
             cls.DB_FILENAME = Config.get_env("DB_FILENAME", cls.DB_FILENAME)
             cls.DB_FILEPATH = os.path.join(project_data_dir, cls.DB_FILENAME)
+
+            cls.USER_CSV_PATH = Config.get_env(
+                "USER_CSV_PATH", cls.USER_CSV_PATH)
+            cls.USER_CSV_PATH = os.path.join(project_data_dir, cls.USER_CSV_PATH)
+
+            cls.USER_DEFAULT_CSV_FILENAME = Config.get_env(
+                "USER_DEFAULT_CSV_FILENAME", cls.USER_DEFAULT_CSV_FILENAME)
+            cls.USER_DEFAULT_CSV_FILEPATH = os.path.join(
+                project_data_dir, cls.USER_DEFAULT_CSV_FILENAME)
         except FileNotFoundError:
             pass
 
