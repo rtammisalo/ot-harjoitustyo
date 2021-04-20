@@ -1,3 +1,4 @@
+import re
 from services.arithmetic_service import ArithmeticService
 
 
@@ -36,7 +37,7 @@ class MainService:
         if not username or len(username) < 3:
             raise InvalidUserException("Username too short")
 
-        if not username.isascii():
+        if not re.match("^[0-9a-zA-Z]*$", username):
             raise InvalidUserException("Username contains illegal characters")
 
         return username.lower()
