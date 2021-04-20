@@ -12,7 +12,12 @@ poetry install
 
 ## Käyttöohjeet
 
-Ohjelma ei vielä tallenna mitään tietokantaan, joten ei tarvita erillisiä `build` komentoja. Aja ohjelma komennolla:
+Ohjelma käyttää tietokantaa käyttäjien tallentamiseen. Aja ensin  `build` komento. 
+```bash
+poetry run invoke build
+```
+
+Aja ohjelma komennolla:
 ```bash
 poetry run invoke start
 ``` 
@@ -23,8 +28,12 @@ poetry run invoke test
 poetry run invoke coverage-report
 ```
 
-## Määrittelydokumentti
+## Dokumentaatio
+### Määrittelydokumentti
 [Vaatimusmäärittely](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
-## Tuntikirjanpito
+### Tuntikirjanpito
 [Tunnit](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/tunnit.md)
+
+### Arkkitehtuuri
+[Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
