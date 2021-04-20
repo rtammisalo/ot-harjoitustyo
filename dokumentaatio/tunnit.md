@@ -11,4 +11,7 @@
 | 11.4.2021 | 6    | Toimivan kertolaskuharjoituksen toteutus, refaktorointia |
 | 13.4.2021 | 2    | Käyttäjäkirjautumisen testit, invoken tasks.py kuntoon vaaditulle tasolle ja VMware seikkailua yliopistolla. |
 | 13.4.2021 | .5   | README:n muokkaus |
-| yhteensä  | 27  | |
+| 17.4.2021 | 5    | Tutkin referenssiprojektin toimintaa, pythonin dokumentaatiota, refaktoroin koodia, lisäsin tuen tietokannalle ja .csv tiedostoille |
+| 18.4.2021 | 6    | Users-tietokannan ja .csv asetustiedostojen ja settings-näkymän toteuttammista, refaktorointia |
+| 20.4.2021 | 3    | Kirjoitin uusiksi MainService-testit ja lisäsin testejä UserRepositorylle, dokumentointia |
+| yhteensä  | 41  | |
