@@ -39,3 +39,9 @@ class UserRepository:
         user_settings = self._settings_repository.get_settings_by_username(
             row_result["username"])
         return User(row_result["username"], row_result["password"], row_result["id"], user_settings)
+
+    def save_settings(self, user):
+        if not user:
+            return
+
+        self._settings_repository.save_user_settings(user)

@@ -16,6 +16,8 @@ class MainService:
         self.arithmetic = ArithmeticService()
 
     def login(self, username, password):
+        username = username.lower()
+
         user = self._user_repository.get_user(username)
 
         if not user:
@@ -30,9 +32,17 @@ class MainService:
         if self._logged_user:
             self._logged_user = None
 
-    def create(self, username, password):
+    def _sanitize_username(self, username):
         if not username or len(username) < 3:
             raise InvalidUserException("Username too short")
+
+        if not username.isascii():
+            raise InvalidUserException("Username contains illegal characters")
+
+        return username.lower()
+
+    def create(self, username, password):
+        username = self._sanitize_username(username)
 
         if not password or len(password) < 3:
             raise InvalidPasswordException("Password is too short")
@@ -43,6 +53,9 @@ class MainService:
             raise InvalidUserException("Username is already in use")
 
         self._logged_user = user
+
+    def save_settings(self):
+        self._user_repository.save_settings(self._logged_user)
 
     def show_current_user(self):
         return self._logged_user

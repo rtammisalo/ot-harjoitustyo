@@ -7,8 +7,11 @@ class SettingsRepository:
     def __init__(self, default_filepath, users_path):
         self._default_filepath = default_filepath
         self._users_path = users_path
-        self._value_parsers = {Settings.MULTIPLY_OPERAND1_DIGITS: self._parse_int,
-                               Settings.MULTIPLY_OPERAND2_DIGITS: self._parse_int,
+        self._value_parsers = {Settings.MULTIPLY_OPERAND1_MIN: self._parse_int,
+                               Settings.MULTIPLY_OPERAND2_MIN: self._parse_int,
+                               Settings.MULTIPLY_OPERAND1_MAX: self._parse_int,
+                               Settings.MULTIPLY_OPERAND2_MAX: self._parse_int,
+                               Settings.MULTIPLY_TIMELIMIT: self._parse_int,
                                Settings.MULTIPLY_TIMER: self._parse_int}
 
     def _parse_settings(self, reader):
@@ -22,6 +25,8 @@ class SettingsRepository:
                 value = self._parse_setting(setting, line[1])
                 settings.set_setting(setting, value)
             except ValueError:
+                continue
+            except KeyError:
                 continue
 
         return settings

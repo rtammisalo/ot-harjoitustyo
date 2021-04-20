@@ -2,8 +2,9 @@ from ui.login import LoginView
 from ui.create_user import CreateUserView
 from ui.exercises import ExercisesView
 from ui.multiplication import MultiplicationView
+from ui.settings import SettingsView
 from ui.base import BaseView
-from ui import constants as ui_constants
+import ui.constants as ui_constants
 from services.main_service import InvalidPasswordException, InvalidUserException
 
 
@@ -37,10 +38,15 @@ class UI:
 
     def _show_exercises_view(self):
         self._show_new_view(ExercisesView(
-            self._root, self._main_service, self._logout_handler, self._exercise_handlers))
+            self._root, self._main_service, self._logout_handler, self._exercise_handlers,
+            self._show_settings_view))
 
     def _show_multiplication_exercise(self):
         self._show_new_view(MultiplicationView(
+            self._root, self._main_service, self._show_exercises_view))
+
+    def _show_settings_view(self):
+        self._show_new_view(SettingsView(
             self._root, self._main_service, self._show_exercises_view))
 
     def _login_handler(self, username, password, login, error_handler):

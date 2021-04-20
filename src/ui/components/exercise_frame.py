@@ -10,7 +10,8 @@ class ExerciseFrame:
         self._init_exercise_frame(answer_handler)
 
     def _init_exercise_frame(self, answer_handler):
-        self.frame = ttk.Frame(master=self._root, borderwidth=2, relief="ridge")
+        self.frame = ttk.Frame(
+            master=self._root, borderwidth=2, relief="ridge")
         question_title_label = ttk.Label(
             master=self.frame, text="Question:")
         self._exercise_question_var = StringVar(self.frame)

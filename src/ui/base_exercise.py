@@ -17,7 +17,8 @@ class BaseExerciseView(BaseView):
         self._frame = None
 
     def _init_question(self):
-        self._question = self._generate_new_question()
+        self._question = self._generate_new_question(
+            self._main_service.show_current_user().settings)
         self._exercise_frame.set_exercise_question(self._question)
         self._start_time = time.perf_counter()
 
@@ -48,13 +49,11 @@ class BaseExerciseView(BaseView):
             master=self._frame, text="Answer", command=self._answer_handler)
         back_button = ttk.Button(
             master=self._frame, text="Back", command=self._show_exercises)
-        settings_button = ttk.Button(master=self._frame, text="Settings")
 
         frame_header_label.grid(sticky=constants.N, pady=10, padx=5)
         self._exercise_frame.frame.grid(sticky=constants.EW, pady=5, padx=5)
         self._results_frame.frame.grid(sticky=constants.EW, pady=5, padx=5)
         answer_button.grid(sticky=constants.EW, pady=5, padx=5)
-        settings_button.grid(sticky=constants.EW, pady=(5, 1), padx=5)
         back_button.grid(sticky=constants.EW, pady=(1, 5), padx=5)
 
         self._exercise_frame.set_focus_on_answer()

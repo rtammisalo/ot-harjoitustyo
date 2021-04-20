@@ -1,3 +1,6 @@
-multiply_operand1_digits,2
-multiply_operand2_digits,1
-multiply_timer,10000
+multiply_operand1_min,2
+multiply_operand2_min,2
+multiply_operand1_max,9
+multiply_operand2_max,9
+multiply_timer,1
+multiply_timelimit,10000

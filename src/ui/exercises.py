@@ -4,10 +4,11 @@ from ui import constants as ui_constants
 
 
 class ExercisesView(BaseView):
-    def __init__(self, window, main_service, logout_handler, exercise_handlers):
+    def __init__(self, window, main_service, logout_handler, exercise_handlers, settings_handler):
         super().__init__(window, main_service)
         self._logout_handler = logout_handler
         self._exercise_handlers = exercise_handlers
+        self._settings_handler = settings_handler
         self._init_frame()
 
     def _init_frame(self):
@@ -18,11 +19,14 @@ class ExercisesView(BaseView):
 
         exercises_frame = self._create_exercises_frame()
 
+        settings_button = ttk.Button(
+            master=self._frame, text="Settings", command=self._settings_handler)
         logout_button = ttk.Button(
             master=self._frame, text="Logout", command=self._logout_handler)
 
         frame_header_label.grid(pady=10, padx=5)
         exercises_frame.grid(pady=10, padx=5)
+        settings_button.grid(pady=10, padx=5)
         logout_button.grid(pady=10, padx=5)
 
         self._frame.focus()

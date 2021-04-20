@@ -1,5 +1,6 @@
 from tkinter import ttk, constants, StringVar
 
+
 class ExerciseResultsFrame:
     def __init__(self, root):
         self._root = root
@@ -9,7 +10,8 @@ class ExerciseResultsFrame:
         self._init_results_frame()
 
     def _init_results_frame(self):
-        self.frame = ttk.Frame(master=self._root, borderwidth=2, relief="ridge")
+        self.frame = ttk.Frame(
+            master=self._root, borderwidth=2, relief="ridge")
         self._answer_result_var = StringVar(self.frame)
         self.set_answer_result("")
         answer_result_label = ttk.Label(
