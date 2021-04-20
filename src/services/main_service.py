@@ -34,7 +34,7 @@ class MainService:
             self._logged_user = None
 
     def _sanitize_username(self, username):
-        if not username or len(username) < 3:
+        if not username or len(username) < 3 or len(username) > 12:
             raise InvalidUserException("Username too short")
 
         if not re.match("^[0-9a-zA-Z]*$", username):
@@ -45,7 +45,7 @@ class MainService:
     def create(self, username, password):
         username = self._sanitize_username(username)
 
-        if not password or len(password) < 3:
+        if not password or len(password) < 3 or len(password) > 20:
             raise InvalidPasswordException("Password is too short")
 
         user = self._user_repository.create_user(username, password)
