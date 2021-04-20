@@ -28,6 +28,11 @@ poetry run invoke test
 poetry run invoke coverage-report
 ```
 
+Pylint:
+```bash
+poetry run invoke lint
+```
+
 ## Dokumentaatio
 ### Määrittelydokumentti
 [Vaatimusmäärittely](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
