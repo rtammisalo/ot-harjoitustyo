@@ -16,17 +16,17 @@ Alla kuvassa piirrettynä kevyt luonnos sovelluksen graafisesta käyttöliittym�
 
 ## Sovelluksen ominaisuudet
 
-- Käyttäjä voi luoda uuden tilin
-  - Tilillä on nimi ja salasana
-- Käyttäjä joutuu kirjautumaan sisään omalla tilillään
+- Käyttäjä voi luoda uuden tilin (Toteutettu)
+  - Tilillä on nimi ja salasana (Toteutettu)
+- Käyttäjä joutuu kirjautumaan sisään omalla tilillään (Toteutettu)
   - Kirjautuessaan sisään käyttäjä voi avautuvasta näkymästä valita:
     1. Yhteenlaskuharjoituksia
-    2. Vähennyslaskuharjoituksia
-    3. Kertolaskuharjoituksia
+    2. Vähennyslaskuharjoituksia 
+    3. Kertolaskuharjoituksia (Toteutettu, muiden näkymien teko voi jäädä seuraavaan viikkoon)
     4. Jakolaskuharjoituksia
     5. Satunnaisharjoituksia
-  - Harjoitusnäkymissä käyttäjä voi ennen harjoittelun alkua muuttaa harjoituksen asetuksia, esim. kuinka monta numeroa operandeissa on tai antaa harjoitukselle aikaraja.
-  - Harjoituksiin vastataan joko näppäimistöllä tai hiirellä (ikkunaan piirretään vastaamista varten pieni keypad)
+  - Harjoitusnäkymissä käyttäjä voi ennen harjoittelun alkua muuttaa harjoituksen asetuksia, esim. kuinka monta numeroa operandeissa on tai antaa harjoitukselle aikaraja. (Toteutettu, aikarajaa ei vielä kuitenkaan erikseen käytetä)
+  - Harjoituksiin vastataan joko näppäimistöllä tai hiirellä (ikkunaan piirretään vastaamista varten pieni keypad) (Näppäimistöllä vastaaminen toteutettu)
 
 ## Mahdollisia lisäominaisuuksia
 - Admin-tili, joka voi tutkia kaikkien käyttäjien tietoja tai tuhota tilejä
