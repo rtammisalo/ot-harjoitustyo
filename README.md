@@ -2,7 +2,7 @@
 ## Sovellus
 Sovellus on aritmetiikan harjoitustyökalu. Käyttäjä voi harjoitella kerto-, jako-, yhteen- ja vähennyslaskuja satunnaisilla tehtävillä. Käyttäjä voi myös muuttaa tehtävien asetuksia.
 
-Tällä hetkellä on vain toteutettu sisäänkirjautuminen ja kertolasku ilman asetuksien vaihtamista.
+Tällä hetkellä on vielä toteuttamatta muut harjoitusnäkymät kuin kertolaskuharjoitukset. 
 
 ## Asennusohjeet
 
