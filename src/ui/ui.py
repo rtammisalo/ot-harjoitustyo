@@ -2,6 +2,9 @@ from ui.login import LoginView
 from ui.create_user import CreateUserView
 from ui.exercises import ExercisesView
 from ui.multiplication import MultiplicationView
+from ui.division import DivisionView
+from ui.addition import AdditionView
+from ui.substraction import SubstractionView
 from ui.settings import SettingsView
 from ui.base import BaseView
 import ui.constants as ui_constants
@@ -17,7 +20,10 @@ class UI:
         self._main_service = main_service
 
         self._exercise_handlers = {
-            ui_constants.MULTIPLICATION: self._show_multiplication_exercise}
+            ui_constants.MULTIPLICATION: self._show_multiplication_exercise,
+            ui_constants.DIVISION: self._show_division_exercise,
+            ui_constants.ADDITION: self._show_addition_exercise,
+            ui_constants.SUBSTRACTION: self._show_substraction_exercise}
         self._login_handlers = {ui_constants.LOGIN_VIEW: self._show_login_view,
                                 ui_constants.CREATE_USER_VIEW: self._show_create_user_view,
                                 ui_constants.EXERCISES_VIEW: self._show_exercises_view,
@@ -43,6 +49,18 @@ class UI:
 
     def _show_multiplication_exercise(self):
         self._show_new_view(MultiplicationView(
+            self._root, self._main_service, self._show_exercises_view))
+
+    def _show_division_exercise(self):
+        self._show_new_view(DivisionView(
+            self._root, self._main_service, self._show_exercises_view))
+
+    def _show_addition_exercise(self):
+        self._show_new_view(AdditionView(
+            self._root, self._main_service, self._show_exercises_view))
+
+    def _show_substraction_exercise(self):
+        self._show_new_view(SubstractionView(
             self._root, self._main_service, self._show_exercises_view))
 
     def _show_settings_view(self):

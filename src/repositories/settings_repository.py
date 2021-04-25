@@ -7,12 +7,6 @@ class SettingsRepository:
     def __init__(self, default_filepath, users_path):
         self._default_filepath = default_filepath
         self._users_path = users_path
-        self._value_parsers = {Settings.MULTIPLY_OPERAND1_MIN: self._parse_int,
-                               Settings.MULTIPLY_OPERAND2_MIN: self._parse_int,
-                               Settings.MULTIPLY_OPERAND1_MAX: self._parse_int,
-                               Settings.MULTIPLY_OPERAND2_MAX: self._parse_int,
-                               Settings.MULTIPLY_TIMELIMIT: self._parse_int,
-                               Settings.MULTIPLY_TIMER: self._parse_int}
 
     def _parse_settings(self, reader):
         settings = Settings()
@@ -22,23 +16,13 @@ class SettingsRepository:
                 continue
             try:
                 setting = line[0]
-                value = self._parse_setting(setting, line[1])
-                settings.set_setting(setting, value)
+                settings.parse_and_set_setting(setting, line[1])
             except ValueError:
                 continue
             except KeyError:
                 continue
 
         return settings
-
-    def _parse_int(self, value):
-        return int(value)
-
-    def _parse_setting(self, setting, value):
-        if setting in self._value_parsers:
-            return self._value_parsers[setting](value)
-
-        return self._parse_int(value)
 
     def _read_settings_file(self, settings_filepath):
         user_settings = Settings()

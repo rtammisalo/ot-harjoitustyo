@@ -32,6 +32,12 @@ class ExercisesView(BaseView):
         self._frame.focus()
         self._frame.bind(
             "1", lambda event: self._exercise_handlers[ui_constants.MULTIPLICATION]())
+        self._frame.bind(
+            "2", lambda event: self._exercise_handlers[ui_constants.DIVISION]())
+        self._frame.bind(
+            "3", lambda event: self._exercise_handlers[ui_constants.ADDITION]())
+        self._frame.bind(
+            "4", lambda event: self._exercise_handlers[ui_constants.SUBSTRACTION]())
 
     def _create_exercises_frame(self):
         exercises_frame = ttk.Frame(
@@ -40,14 +46,17 @@ class ExercisesView(BaseView):
         multiplication_button = ttk.Button(
             master=exercises_frame, text="(1) Multiplication",
             command=self._exercise_handlers[ui_constants.MULTIPLICATION])
-        addition_button = ttk.Button(
-            master=exercises_frame, text="Unimplemented")
-        substraction_button = ttk.Button(
-            master=exercises_frame, text="Unimplemented")
         division_button = ttk.Button(
-            master=exercises_frame, text="Unimplemented")
+            master=exercises_frame, text="(2) Division",
+            command=self._exercise_handlers[ui_constants.DIVISION])
+        addition_button = ttk.Button(
+            master=exercises_frame, text="(3) Addition",
+            command=self._exercise_handlers[ui_constants.ADDITION])
+        substraction_button = ttk.Button(
+            master=exercises_frame, text="(4) Substraction",
+            command=self._exercise_handlers[ui_constants.SUBSTRACTION])
 
-        multiplication_button.grid(column=0, pady=5, padx=5)
+        multiplication_button.grid(row=0, column=0, pady=5, padx=5)
         division_button.grid(row=0, column=1, pady=5, padx=5)
         addition_button.grid(column=0, pady=5, padx=5)
         substraction_button.grid(row=1, column=1, pady=5, padx=5)
