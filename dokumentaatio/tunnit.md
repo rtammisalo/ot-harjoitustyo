@@ -16,5 +16,5 @@
 | 20.4.2021 | 3    | Kirjoitin uusiksi MainService-testit ja lisäsin testejä UserRepositorylle, dokumentointia |
 | 24.4.2021 | 5    | Refaktorointia, Uusien harjoitusnäkymien ja niiden asetuksien tekoa, TkInterin kanssa taistelua |
 | 25.4.2021 | 4    | Uusien harjoitusnäkymien ja niiden asetuksien tekoa, SettingsRepository testien aloitusta ja TkInterin kanssa taistelu jatkuu |
-| 27.4.2021 | 4    | Dokumentointia, refaktorointia ja testien kirjoitusta SettingsRepositorylle |
-| yhteensä  | 54  | |
+| 27.4.2021 | 5    | Dokumentointia, refaktorointia ja testien kirjoitusta SettingsRepositorylle |
+| yhteensä  | 55  | |
