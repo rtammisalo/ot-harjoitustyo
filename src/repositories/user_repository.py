@@ -17,7 +17,7 @@ class UserRepository:
         # Use (username, ) to signify that we are passing a tuple.
         cursor.execute("select * from Users where username = ?", (username, ))
 
-        return self._get_user(cursor.fetchone())
+        return self._get_user_from_row(cursor.fetchone())
 
     def create_user(self, username, password):
         cursor = self._database.connection.cursor()
@@ -32,7 +32,7 @@ class UserRepository:
         except sqlite3.IntegrityError:
             return None
 
-    def _get_user(self, row_result):
+    def _get_user_from_row(self, row_result):
         if not row_result:
             return None
 
