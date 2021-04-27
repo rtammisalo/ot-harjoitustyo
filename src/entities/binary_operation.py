@@ -12,7 +12,7 @@ class BinaryOperation:
     def parse_and_check_answer(self, answer):
         try:
             answer = decimal.Decimal(answer.replace(",", "."))
-            if self.result() == answer:
+            if round(self.result(), 3) == answer:
                 return True
         except decimal.InvalidOperation as error:
             raise ValueError("Cannot parse answer") from error
@@ -20,6 +20,3 @@ class BinaryOperation:
             pass
 
         return False
-
-
-decimal.getcontext().prec = 3

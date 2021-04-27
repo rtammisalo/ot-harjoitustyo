@@ -8,7 +8,7 @@ from entities.substraction_operation import SubstractionOperation
 class ArithmeticService:
     def _get_operand(self, min_op, max_op):
         if min_op > max_op:
-            max_op = min_op
+            min_op = max_op
 
         return rand.randint(min_op, max_op)
 
