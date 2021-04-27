@@ -33,6 +33,10 @@ Pylint:
 poetry run invoke lint
 ```
 
+## Releases
+### Release 1 (viikko 5)
+[Release 1](https://github.com/rtammisalo/ot-harjoitustyo/releases/tag/viikko5)
+
 ## Dokumentaatio
 ### Määrittelydokumentti
 [Vaatimusmäärittely](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
