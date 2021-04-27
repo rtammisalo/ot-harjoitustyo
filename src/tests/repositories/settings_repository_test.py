@@ -12,6 +12,7 @@ class TestSettingsRepository(unittest.TestCase):
     TEST_USER_PASSWORD = "test_password"
 
     def setUp(self):
+        self._new_test_default_path = f"{Config.USER_DEFAULT_CSV_FILEPATH}.test"
         self._remove_files()
         self._default_settings = self._create_default_settings()
         self._settings_repository = SettingsRepository(Config.USER_DEFAULT_CSV_FILEPATH,
@@ -33,6 +34,7 @@ class TestSettingsRepository(unittest.TestCase):
             test_users_path, f"{self.TEST_USER_NAME}.csv"))
         self._remove_file(os.path.join(
             test_users_path, f"{self.TEST_NEW_USER_NAME}.csv"))
+        self._remove_file(self._new_test_default_path)
 
     def test_created_settings_can_be_found(self):
         settings = self._settings_repository.get_settings_by_username(
@@ -55,13 +57,22 @@ class TestSettingsRepository(unittest.TestCase):
 
         self.assertNotEqual(other_settings, settings)
 
-    def test_settings_repository_can_create_without_default_file(self):
-        no_default_repository = SettingsRepository(f"{Config.USER_DEFAULT_CSV_FILEPATH}.broken",
+    def test_settings_repository_can_create_new_settings_without_default_file(self):
+        self.assertFalse(os.path.exists(self._new_test_default_path))
+        no_default_repository = SettingsRepository(self._new_test_default_path,
                                                    Config.USER_CSV_PATH)
         settings = no_default_repository.get_settings_by_username(
             self.TEST_NEW_USER_NAME)
-        
+
         self.assertEqual(Settings(), settings)
+
+    def test_settings_repository_creates_a_new_default_file(self):
+        self.assertFalse(os.path.exists(self._new_test_default_path))
+        no_default_repository = SettingsRepository(self._new_test_default_path,
+                                                   Config.USER_CSV_PATH)
+        settings = no_default_repository.get_settings_by_username(
+            self.TEST_NEW_USER_NAME)
+        self.assertTrue(os.path.exists(self._new_test_default_path))
 
     def _write_settings(self, username, settings):
         self._settings_repository.save_user_settings(

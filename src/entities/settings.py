@@ -44,14 +44,14 @@ class Settings:
                           self.DIVIDE_TIMER: SettingValue(1, self._sanitize_timer),
                           self.ADD_OPERAND1_MIN: SettingValue(2, self._sanitize_operand),
                           self.ADD_OPERAND2_MIN: SettingValue(2, self._sanitize_operand),
-                          self.ADD_OPERAND1_MAX: SettingValue(9, self._sanitize_operand),
-                          self.ADD_OPERAND2_MAX: SettingValue(9, self._sanitize_operand),
+                          self.ADD_OPERAND1_MAX: SettingValue(500, self._sanitize_operand),
+                          self.ADD_OPERAND2_MAX: SettingValue(500, self._sanitize_operand),
                           self.ADD_TIMELIMIT: SettingValue(10000, self._sanitize_timelimit),
                           self.ADD_TIMER: SettingValue(1, self._sanitize_timer),
                           self.SUB_OPERAND1_MIN: SettingValue(2, self._sanitize_operand),
                           self.SUB_OPERAND2_MIN: SettingValue(2, self._sanitize_operand),
-                          self.SUB_OPERAND1_MAX: SettingValue(9, self._sanitize_operand),
-                          self.SUB_OPERAND2_MAX: SettingValue(9, self._sanitize_operand),
+                          self.SUB_OPERAND1_MAX: SettingValue(500, self._sanitize_operand),
+                          self.SUB_OPERAND2_MAX: SettingValue(500, self._sanitize_operand),
                           self.SUB_TIMELIMIT: SettingValue(10000, self._sanitize_timelimit),
                           self.SUB_TIMER: SettingValue(1, self._sanitize_timer), }
 

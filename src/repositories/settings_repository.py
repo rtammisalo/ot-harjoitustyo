@@ -59,7 +59,7 @@ class SettingsRepository:
             try:
                 settings = self._read_settings_file(self._default_filepath)
             except FileNotFoundError:
-                pass
+                self._write_settings(self._default_filepath, settings)
 
         self._write_settings(filepath, settings)
         return settings
