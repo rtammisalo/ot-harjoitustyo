@@ -1,8 +1,8 @@
 # Ohjelmistotekniikan harjoitustyö
 ## Sovellus
-Sovellus on aritmetiikan harjoitustyökalu. Käyttäjä voi harjoitella kerto-, jako-, yhteen- ja vähennyslaskuja satunnaisilla tehtävillä. Käyttäjä voi myös muuttaa tehtävien asetuksia.
+Sovellus on aritmetiikan harjoitustyökalu. Käyttäjä voi harjoitella kerto-, jako-, yhteen- ja vähennyslaskuja satunnaisilla tehtävillä. Käyttäjä voi myös muuttaa tehtävien asetuksia. Käyttäjällä on oma tili ja tilillä henkilökohtaiset asetustiedostot eri harjoituksiin.
 
-Tällä hetkellä on vielä toteuttamatta muut harjoitusnäkymät kuin kertolaskuharjoitukset. 
+Tällä hetkellä on vielä toteuttamatta vain satunnaisharjoittelu alkuperäisestä määrittelydokumentista.
 
 ## Asennusohjeet
 
