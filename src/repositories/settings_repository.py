@@ -51,17 +51,22 @@ class SettingsRepository:
 
     def get_settings_by_username(self, username):
         filepath = self._get_user_settings_filepath(username)
-        settings = Settings()
 
         try:
             return self._read_settings_file(filepath)
         except FileNotFoundError:
-            try:
-                settings = self._read_settings_file(self._default_filepath)
-            except FileNotFoundError:
-                self._write_settings(self._default_filepath, settings)
+            settings = self._get_default_settings()
+            self._write_settings(filepath, settings)
+            return settings
 
-        self._write_settings(filepath, settings)
+    def _get_default_settings(self):
+        settings = Settings()
+
+        try:
+            settings = self._read_settings_file(self._default_filepath)
+        except FileNotFoundError:
+            self._write_settings(self._default_filepath, settings)
+
         return settings
 
     def save_user_settings(self, user):
