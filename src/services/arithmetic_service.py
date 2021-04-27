@@ -3,6 +3,8 @@ from entities.multiplication_operation import MultiplicationOperation
 from entities.division_operation import DivisionOperation
 from entities.addition_operation import AdditionOperation
 from entities.substraction_operation import SubstractionOperation
+
+
 class ArithmeticService:
     def _get_operand(self, min_op, max_op):
         if min_op > max_op:
