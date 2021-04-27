@@ -46,7 +46,7 @@ class MainService:
         username = self._sanitize_username(username)
 
         if not password or len(password) < 3 or len(password) > 20:
-            raise InvalidPasswordException("Password is too short")
+            raise InvalidPasswordException("Password is too short or too long")
 
         user = self._user_repository.create_user(username, password)
 

@@ -14,13 +14,13 @@ class TestSettingsRepository(unittest.TestCase):
     def setUp(self):
         self._new_test_default_path = f"{Config.USER_DEFAULT_CSV_FILEPATH}.test"
         self._remove_files()
-        self._default_settings = self._create_default_settings()
         self._settings_repository = SettingsRepository(Config.USER_DEFAULT_CSV_FILEPATH,
                                                        Config.USER_CSV_PATH)
         self._test_settings = self._settings_repository.get_settings_by_username(
             self.TEST_USER_NAME)
         self._test_settings.set_setting(
             Settings.MULTIPLY_TIMELIMIT, self._test_settings.get_setting(Settings.MULTIPLY_TIMELIMIT) + 1)
+        self._default_settings = self._create_default_settings()
 
         self._write_settings(self.TEST_USER_NAME, self._test_settings)
 
@@ -34,6 +34,7 @@ class TestSettingsRepository(unittest.TestCase):
             test_users_path, f"{self.TEST_USER_NAME}.csv"))
         self._remove_file(os.path.join(
             test_users_path, f"{self.TEST_NEW_USER_NAME}.csv"))
+        self._remove_file(Config.USER_DEFAULT_CSV_FILEPATH)
         self._remove_file(self._new_test_default_path)
 
     def test_created_settings_can_be_found(self):
@@ -82,6 +83,13 @@ class TestSettingsRepository(unittest.TestCase):
         return User(username, "abc", 1, settings)
 
     def _create_default_settings(self):
+        changed_default_setting = Settings.SUB_TIMELIMIT
+        changed_default_value = 12345
+
+        with open(Config.USER_DEFAULT_CSV_FILEPATH, mode="a") as settings_file:
+            settings_file.write(
+                f"{changed_default_setting},{changed_default_value}")
+
         settings = Settings()
         setting_values = {Settings.MULTIPLY_OPERAND1_MIN: 2,
                           Settings.MULTIPLY_OPERAND2_MIN: 2,
@@ -108,4 +116,5 @@ class TestSettingsRepository(unittest.TestCase):
                           Settings.SUB_TIMELIMIT: 10000,
                           Settings.SUB_TIMER: 1}
         settings.set_settings_from_dict(setting_values)
+        settings.set_setting(changed_default_setting, changed_default_value)
         return settings
