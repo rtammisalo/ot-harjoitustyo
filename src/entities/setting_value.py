@@ -14,3 +14,9 @@ class SettingValue:
 
     def parse_and_set_value(self, new_value_str):
         self.value = self._parse(new_value_str)
+
+    def __eq__(self, other):
+        if self._value == other._value:
+            return True
+
+        return False

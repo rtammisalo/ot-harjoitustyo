@@ -90,3 +90,9 @@ class Settings:
 
     def _sanitize_timer(self, timer):
         return timer if (0 <= timer <= 1) else 0
+
+    def __eq__(self, other):
+        if self._settings == other._settings:
+            return True
+
+        return False

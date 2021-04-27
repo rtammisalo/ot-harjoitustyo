@@ -19,8 +19,6 @@ class SettingsRepository:
                 settings.parse_and_set_setting(setting, line[1])
             except ValueError:
                 continue
-            except KeyError:
-                continue
 
         return settings
 
