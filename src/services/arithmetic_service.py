@@ -1,5 +1,6 @@
 import random as rand
-from entities.operations import MultiplicationOperation, DivisionOperation, AdditionOperation, SubstractionOperation
+from entities.operations import MultiplicationOperation, DivisionOperation
+from entities.operations import AdditionOperation, SubstractionOperation
 
 
 class ArithmeticService:

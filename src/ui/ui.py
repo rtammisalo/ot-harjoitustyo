@@ -6,6 +6,7 @@ from ui.settings import SettingsView
 from ui.base import BaseView
 import ui.constants as ui_constants
 from services.main_service import InvalidPasswordException, InvalidUserException
+from repositories.user_repository import CriticalDatabaseError
 
 
 class UI:
@@ -72,6 +73,9 @@ class UI:
             self._show_exercises_view()
         except (InvalidUserException, InvalidPasswordException) as error:
             error_handler(error)
+        except CriticalDatabaseError as error:
+            print(error)
+            self._root.destroy()
 
     def _logout_handler(self):
         self._main_service.logout()

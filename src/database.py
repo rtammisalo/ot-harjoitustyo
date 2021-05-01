@@ -19,10 +19,18 @@ class Database:
         cursor = self.connection.cursor()
 
         cursor.execute(
-            "create table Users (id integer primary key, username text unique, password text);")
+            "create table if not exists Users "
+            "(id integer primary key, username text unique, password text);")
 
         self.connection.commit()
 
     def init_database(self):
         self._drop_tables()
         self._create_tables()
+
+    def is_db_connection_ok(self):
+        try:
+            self._create_tables()
+            return True
+        except sqlite3.DatabaseError:
+            return False

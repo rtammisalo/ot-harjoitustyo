@@ -4,6 +4,10 @@ from config import Config
 from repositories.settings_repository import SettingsRepository
 
 
+class CriticalDatabaseError(Exception):
+    pass
+
+
 class UserRepository:
     def __init__(self, database,
                  settings_repository=SettingsRepository(Config.USER_DEFAULT_CSV_FILEPATH,
@@ -12,17 +16,21 @@ class UserRepository:
         self._settings_repository = settings_repository
 
     def get_user(self, username):
-        cursor = self._database.connection.cursor()
+        try:
+            cursor = self._database.connection.cursor()
 
-        # Use (username, ) to signify that we are passing a tuple.
-        cursor.execute("select * from Users where username = ?", (username, ))
+            # Use (username, ) to signify that we are passing a tuple.
+            cursor.execute(
+                "select * from Users where username = ?", (username, ))
 
-        return self._get_user_from_row(cursor.fetchone())
+            return self._get_user_from_row(cursor.fetchone())
+        except sqlite3.DatabaseError as error:
+            raise CriticalDatabaseError(
+                "ERROR: Critical failure while reading from database.") from error
 
     def create_user(self, username, password):
-        cursor = self._database.connection.cursor()
-
         try:
+            cursor = self._database.connection.cursor()
             cursor.execute("insert into Users (username, password) values (?, ?)",
                            (username, password))
 
@@ -31,6 +39,9 @@ class UserRepository:
             return self.get_user(username)
         except sqlite3.IntegrityError:
             return None
+        except sqlite3.DatabaseError as error:
+            raise CriticalDatabaseError(
+                "ERROR: Critical failure while writing to database.") from error
 
     def _get_user_from_row(self, row_result):
         if not row_result:

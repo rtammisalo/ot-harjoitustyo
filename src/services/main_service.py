@@ -1,5 +1,6 @@
 import re
 from services.arithmetic_service import ArithmeticService
+from repositories.user_repository import CriticalDatabaseError
 
 
 class InvalidPasswordException(Exception):
@@ -19,7 +20,10 @@ class MainService:
     def login(self, username, password):
         username = username.lower()
 
-        user = self._user_repository.get_user(username)
+        try:
+            user = self._user_repository.get_user(username)
+        except CriticalDatabaseError as error:
+            raise error
 
         if not user:
             raise InvalidUserException("No such user")
@@ -48,7 +52,10 @@ class MainService:
         if not password or len(password) < 3 or len(password) > 20:
             raise InvalidPasswordException("Password is too short or too long")
 
-        user = self._user_repository.create_user(username, password)
+        try:
+            user = self._user_repository.create_user(username, password)
+        except CriticalDatabaseError as error:
+            raise error
 
         if not user:
             raise InvalidUserException("Username is already in use")
