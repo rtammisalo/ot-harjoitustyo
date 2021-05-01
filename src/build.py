@@ -2,7 +2,7 @@ import os
 from config import Config
 from database import Database
 
-# Removes all tables from the database and recreates them.
+# Removes previous database and recreates it.
 if __name__ == "__main__":
     if os.path.exists(Config.DB_FILEPATH):
         os.remove(Config.DB_FILEPATH)
