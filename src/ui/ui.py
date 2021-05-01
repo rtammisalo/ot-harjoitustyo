@@ -1,10 +1,7 @@
 from ui.login import LoginView
 from ui.create_user import CreateUserView
-from ui.exercises import ExercisesView
-from ui.multiplication import MultiplicationView
-from ui.division import DivisionView
-from ui.addition import AdditionView
-from ui.substraction import SubstractionView
+from ui.exercise_selection import ExerciseSelectionView
+from ui.exercises import MultiplicationView, DivisionView, AdditionView, SubstractionView
 from ui.settings import SettingsView
 from ui.base import BaseView
 import ui.constants as ui_constants
@@ -43,7 +40,7 @@ class UI:
             LoginView(self._root, self._main_service, self._login_handlers))
 
     def _show_exercises_view(self):
-        self._show_new_view(ExercisesView(
+        self._show_new_view(ExerciseSelectionView(
             self._root, self._main_service, self._logout_handler, self._exercise_handlers,
             self._show_settings_view))
 
