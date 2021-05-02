@@ -17,20 +17,20 @@ class Config:
 
         try:
             load_dotenv(dotenv_path=os.path.join(project_root_dir, ".env"))
-
-            cls.DB_FILENAME = Config.get_env("DB_FILENAME", cls.DB_FILENAME)
-            cls.DB_FILEPATH = os.path.join(project_data_dir, cls.DB_FILENAME)
-
-            cls.USER_CSV_PATH = Config.get_env(
-                "USER_CSV_PATH", cls.USER_CSV_PATH)
-            cls.USER_CSV_PATH = os.path.join(project_data_dir, cls.USER_CSV_PATH)
-
-            cls.USER_DEFAULT_CSV_FILENAME = Config.get_env(
-                "USER_DEFAULT_CSV_FILENAME", cls.USER_DEFAULT_CSV_FILENAME)
-            cls.USER_DEFAULT_CSV_FILEPATH = os.path.join(
-                project_data_dir, cls.USER_DEFAULT_CSV_FILENAME)
         except FileNotFoundError:
             pass
+
+        cls.DB_FILENAME = Config.get_env("DB_FILENAME", cls.DB_FILENAME)
+        cls.DB_FILEPATH = os.path.join(project_data_dir, cls.DB_FILENAME)
+
+        cls.USER_CSV_PATH = Config.get_env(
+            "USER_CSV_PATH", cls.USER_CSV_PATH)
+        cls.USER_CSV_PATH = os.path.join(project_data_dir, cls.USER_CSV_PATH)
+
+        cls.USER_DEFAULT_CSV_FILENAME = Config.get_env(
+            "USER_DEFAULT_CSV_FILENAME", cls.USER_DEFAULT_CSV_FILENAME)
+        cls.USER_DEFAULT_CSV_FILEPATH = os.path.join(
+            project_data_dir, cls.USER_DEFAULT_CSV_FILENAME)
 
     @staticmethod
     def get_env(env_name, default_value):
