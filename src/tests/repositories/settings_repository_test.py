@@ -91,30 +91,6 @@ class TestSettingsRepository(unittest.TestCase):
                 f"{changed_default_setting},{changed_default_value}")
 
         settings = Settings()
-        setting_values = {Settings.MULTIPLY_OPERAND1_MIN: 2,
-                          Settings.MULTIPLY_OPERAND2_MIN: 2,
-                          Settings.MULTIPLY_OPERAND1_MAX: 9,
-                          Settings.MULTIPLY_OPERAND2_MAX: 9,
-                          Settings.MULTIPLY_TIMELIMIT: 10000,
-                          Settings.MULTIPLY_TIMER: 1,
-                          Settings.DIVIDE_OPERAND1_MIN: 2,
-                          Settings.DIVIDE_OPERAND2_MIN: 2,
-                          Settings.DIVIDE_OPERAND1_MAX: 9,
-                          Settings.DIVIDE_OPERAND2_MAX: 9,
-                          Settings.DIVIDE_TIMELIMIT: 10000,
-                          Settings.DIVIDE_TIMER: 1,
-                          Settings.ADD_OPERAND1_MIN: 2,
-                          Settings.ADD_OPERAND2_MIN: 2,
-                          Settings.ADD_OPERAND1_MAX: 500,
-                          Settings.ADD_OPERAND2_MAX: 500,
-                          Settings.ADD_TIMELIMIT: 10000,
-                          Settings.ADD_TIMER: 1,
-                          Settings.SUB_OPERAND1_MIN: 2,
-                          Settings.SUB_OPERAND2_MIN: 2,
-                          Settings.SUB_OPERAND1_MAX: 500,
-                          Settings.SUB_OPERAND2_MAX: 500,
-                          Settings.SUB_TIMELIMIT: 10000,
-                          Settings.SUB_TIMER: 1}
-        settings.set_settings_from_dict(setting_values)
         settings.set_setting(changed_default_setting, changed_default_value)
+
         return settings

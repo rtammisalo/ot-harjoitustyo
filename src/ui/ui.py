@@ -1,7 +1,8 @@
 from ui.login import LoginView
 from ui.create_user import CreateUserView
 from ui.exercise_selection import ExerciseSelectionView
-from ui.exercises import MultiplicationView, DivisionView, AdditionView, SubstractionView
+from ui.exercises import MultiplicationView, DivisionView, AdditionView, \
+    SubstractionView, RandomView
 from ui.settings import SettingsView
 from ui.base import BaseView
 import ui.constants as ui_constants
@@ -21,7 +22,8 @@ class UI:
             ui_constants.MULTIPLICATION: self._show_multiplication_exercise,
             ui_constants.DIVISION: self._show_division_exercise,
             ui_constants.ADDITION: self._show_addition_exercise,
-            ui_constants.SUBSTRACTION: self._show_substraction_exercise}
+            ui_constants.SUBSTRACTION: self._show_substraction_exercise,
+            ui_constants.RANDOM: self._show_random_exercise}
         self._login_handlers = {ui_constants.LOGIN_VIEW: self._show_login_view,
                                 ui_constants.CREATE_USER_VIEW: self._show_create_user_view,
                                 ui_constants.EXERCISES_VIEW: self._show_exercises_view,
@@ -59,6 +61,10 @@ class UI:
 
     def _show_substraction_exercise(self):
         self._show_new_view(SubstractionView(
+            self._root, self._main_service, self._show_exercises_view))
+
+    def _show_random_exercise(self):
+        self._show_new_view(RandomView(
             self._root, self._main_service, self._show_exercises_view))
 
     def _show_settings_view(self):

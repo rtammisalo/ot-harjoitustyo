@@ -26,6 +26,12 @@ class Settings:
     SUB_OPERAND2_MAX = "sub_operand2_max"
     SUB_TIMER = "sub_timer"
     SUB_TIMELIMIT = "sub_timelimit"
+    RANDOM_USE_MULTIPLY = "random_use_multiply"
+    RANDOM_USE_DIVIDE = "random_use_divide"
+    RANDOM_USE_ADD = "random_use_add"
+    RANDOM_USE_SUB = "random_use_sub"
+    RANDOM_TIMER = "random_timer"
+    RANDOM_TIMELIMIT = "random_timelimit"
 
     def __init__(self):
         # These are the hard-coded default values that are used when even the default file
@@ -35,25 +41,31 @@ class Settings:
                           self.MULTIPLY_OPERAND1_MAX: SettingValue(9, self._sanitize_operand),
                           self.MULTIPLY_OPERAND2_MAX: SettingValue(9, self._sanitize_operand),
                           self.MULTIPLY_TIMELIMIT: SettingValue(10000, self._sanitize_timelimit),
-                          self.MULTIPLY_TIMER: SettingValue(1, self._sanitize_timer),
+                          self.MULTIPLY_TIMER: SettingValue(1, self._sanitize_boolean),
                           self.DIVIDE_OPERAND1_MIN: SettingValue(2, self._sanitize_operand),
                           self.DIVIDE_OPERAND2_MIN: SettingValue(2, self._sanitize_operand),
                           self.DIVIDE_OPERAND1_MAX: SettingValue(9, self._sanitize_operand),
                           self.DIVIDE_OPERAND2_MAX: SettingValue(9, self._sanitize_operand),
                           self.DIVIDE_TIMELIMIT: SettingValue(10000, self._sanitize_timelimit),
-                          self.DIVIDE_TIMER: SettingValue(1, self._sanitize_timer),
+                          self.DIVIDE_TIMER: SettingValue(1, self._sanitize_boolean),
                           self.ADD_OPERAND1_MIN: SettingValue(2, self._sanitize_operand),
                           self.ADD_OPERAND2_MIN: SettingValue(2, self._sanitize_operand),
                           self.ADD_OPERAND1_MAX: SettingValue(500, self._sanitize_operand),
                           self.ADD_OPERAND2_MAX: SettingValue(500, self._sanitize_operand),
                           self.ADD_TIMELIMIT: SettingValue(10000, self._sanitize_timelimit),
-                          self.ADD_TIMER: SettingValue(1, self._sanitize_timer),
+                          self.ADD_TIMER: SettingValue(1, self._sanitize_boolean),
                           self.SUB_OPERAND1_MIN: SettingValue(2, self._sanitize_operand),
                           self.SUB_OPERAND2_MIN: SettingValue(2, self._sanitize_operand),
                           self.SUB_OPERAND1_MAX: SettingValue(500, self._sanitize_operand),
                           self.SUB_OPERAND2_MAX: SettingValue(500, self._sanitize_operand),
                           self.SUB_TIMELIMIT: SettingValue(10000, self._sanitize_timelimit),
-                          self.SUB_TIMER: SettingValue(1, self._sanitize_timer), }
+                          self.SUB_TIMER: SettingValue(1, self._sanitize_boolean),
+                          self.RANDOM_USE_MULTIPLY: SettingValue(1, self._sanitize_boolean),
+                          self.RANDOM_USE_DIVIDE: SettingValue(1, self._sanitize_boolean),
+                          self.RANDOM_USE_ADD: SettingValue(1, self._sanitize_boolean),
+                          self.RANDOM_USE_SUB: SettingValue(1, self._sanitize_boolean),
+                          self.RANDOM_TIMELIMIT: SettingValue(10000, self._sanitize_timelimit),
+                          self.RANDOM_TIMER: SettingValue(1, self._sanitize_boolean), }
 
     def get_settings_as_dict(self):
         return {key: setting.value for key, setting in self._settings.items()}
@@ -88,7 +100,7 @@ class Settings:
     def _sanitize_timelimit(self, timelimit):
         return timelimit if (100 <= timelimit <= 100000) else 10000
 
-    def _sanitize_timer(self, timer):
+    def _sanitize_boolean(self, timer):
         return timer if (0 <= timer <= 1) else 0
 
     def __eq__(self, other):

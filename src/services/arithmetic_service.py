@@ -38,6 +38,30 @@ class ArithmeticService:
                                 settings.get_setting(settings.SUB_OPERAND2_MAX))
         return SubstractionOperation(op1, op2)
 
+    def get_random_question(self, settings):
+        question_list = self._get_random_question_list(settings)
+        return rand.choice(question_list)
+
+    def _get_random_question_list(self, settings):
+        questions = []
+
+        if settings.get_setting(settings.RANDOM_USE_MULTIPLY) == 1:
+            questions.append(self.get_multiplication_question(settings))
+
+        if settings.get_setting(settings.RANDOM_USE_DIVIDE) == 1:
+            questions.append(self.get_division_question(settings))
+
+        if settings.get_setting(settings.RANDOM_USE_ADD) == 1:
+            questions.append(self.get_addition_question(settings))
+
+        if settings.get_setting(settings.RANDOM_USE_SUB) == 1:
+            questions.append(self.get_substraction_question(settings))
+
+        if len(questions) == 0:
+            questions.append(self.get_multiplication_question(settings))
+
+        return questions
+
     def check_answer(self, operation, user_answer):
         try:
             return operation.parse_and_check_answer(user_answer)

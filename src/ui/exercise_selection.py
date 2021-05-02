@@ -1,4 +1,4 @@
-from tkinter import ttk
+from tkinter import ttk, constants
 from ui.base import BaseView
 from ui import constants as ui_constants
 
@@ -38,27 +38,41 @@ class ExerciseSelectionView(BaseView):
             "3", lambda event: self._exercise_handlers[ui_constants.ADDITION]())
         self._frame.bind(
             "4", lambda event: self._exercise_handlers[ui_constants.SUBSTRACTION]())
+        self._frame.bind(
+            "5", lambda event: self._exercise_handlers[ui_constants.RANDOM]())
 
     def _create_exercises_frame(self):
         exercises_frame = ttk.Frame(
             master=self._frame, borderwidth=2, relief="ridge")
 
+        style = ttk.Style()
+        style.configure("Left.TButton", anchor=constants.W)
+
         multiplication_button = ttk.Button(
-            master=exercises_frame, text="(1) Multiplication",
+            master=exercises_frame, text="(1) Multiplication", style="Left.TButton",
             command=self._exercise_handlers[ui_constants.MULTIPLICATION])
         division_button = ttk.Button(
-            master=exercises_frame, text="(2) Division",
+            master=exercises_frame, text="(2) Division", style="Left.TButton",
             command=self._exercise_handlers[ui_constants.DIVISION])
         addition_button = ttk.Button(
-            master=exercises_frame, text="(3) Addition",
+            master=exercises_frame, text="(3) Addition", style="Left.TButton",
             command=self._exercise_handlers[ui_constants.ADDITION])
         substraction_button = ttk.Button(
-            master=exercises_frame, text="(4) Substraction",
+            master=exercises_frame, text="(4) Substraction", style="Left.TButton",
             command=self._exercise_handlers[ui_constants.SUBSTRACTION])
+        random_button = ttk.Button(
+            master=exercises_frame, text="(5) Random Exercises",
+            command=self._exercise_handlers[ui_constants.RANDOM])
 
-        multiplication_button.grid(row=0, column=0, pady=5, padx=5)
-        division_button.grid(row=0, column=1, pady=5, padx=5)
-        addition_button.grid(column=0, pady=5, padx=5)
-        substraction_button.grid(row=1, column=1, pady=5, padx=5)
+        multiplication_button.grid(
+            row=0, column=0, sticky=constants.EW, pady=2, padx=2)
+        division_button.grid(
+            row=0, column=1, sticky=constants.EW, pady=2, padx=2)
+        addition_button.grid(
+            row=1, column=0, sticky=constants.EW, pady=2, padx=2)
+        substraction_button.grid(
+            row=1, column=1, sticky=constants.EW, pady=2, padx=2)
+        random_button.grid(row=2, columnspan=2,
+                           sticky=constants.EW, pady=5, padx=2)
 
         return exercises_frame

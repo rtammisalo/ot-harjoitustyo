@@ -33,7 +33,8 @@ class ExerciseResultsFrame:
             row=0, column=0, sticky=constants.W, pady=5, padx=5)
         answer_timer_label.grid(
             row=0, column=1, sticky=constants.W, pady=5, padx=5)
-        self._correct_answer_label.grid(sticky=constants.W, pady=2, padx=5)
+        self._correct_answer_label.grid(
+            sticky=constants.W, columnspan=2, pady=2, padx=5)
 
         self.frame.grid_columnconfigure(0, weight=1, minsize=150)
         self.frame.grid_columnconfigure(1, weight=1, minsize=150)
