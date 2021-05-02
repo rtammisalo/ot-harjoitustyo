@@ -39,7 +39,7 @@ class MainService:
 
     def _sanitize_username(self, username):
         if not username or len(username) < 3 or len(username) > 12:
-            raise InvalidUserException("Username too short")
+            raise InvalidUserException("Username too short or too long")
 
         if not re.match("^[0-9a-zA-Z]*$", username):
             raise InvalidUserException("Username contains illegal characters")
