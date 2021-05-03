@@ -1,5 +1,6 @@
 from entities.settings import Settings
 
+
 class FakeSettingsRepository:
     def __init__(self):
         self._settings = {}

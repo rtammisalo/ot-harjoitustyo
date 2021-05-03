@@ -2,6 +2,8 @@ from entities.setting_value import SettingValue
 
 
 class Settings:
+    """A class for storing in-use user settings. Contains ways to access and safely change settings.
+    """
     MULTIPLY_OPERAND1_MIN = "multiply_operand1_min"
     MULTIPLY_OPERAND2_MIN = "multiply_operand2_min"
     MULTIPLY_OPERAND1_MAX = "multiply_operand1_max"
@@ -34,6 +36,8 @@ class Settings:
     RANDOM_TIMELIMIT = "random_timelimit"
 
     def __init__(self):
+        """Initializes the Settings object to default values. Safe to use as is.
+        """
         # These are the hard-coded default values that are used when even the default file
         # cannot be found.
         self._settings = {self.MULTIPLY_OPERAND1_MIN: SettingValue(2, self._sanitize_operand),
@@ -68,19 +72,45 @@ class Settings:
                           self.RANDOM_TIMER: SettingValue(1, self._sanitize_boolean), }
 
     def get_settings_as_dict(self):
+        """Returns settings as dict.
+
+        Returns:
+            dict: Settings as (setting name, setting value) pairs.
+        """
         return {key: setting.value for key, setting in self._settings.items()}
 
     def get_setting(self, setting):
+        """Returns the value of a setting, if it exists.
+
+        Args:
+            setting (str): Setting-name as a string.
+
+        Returns:
+            int: Value of the setting.
+            None: No setting with the name.
+        """
         if setting not in self._settings:
             return None
 
         return self._settings[setting].value
 
     def set_setting(self, setting, value):
+        """Tries to set a setting to the given value.
+
+        Args:
+            setting (str): Setting-name as a string.
+            value: Value of the setting.
+        """
         if setting in self._settings:
             self._settings[setting].value = value
 
     def parse_and_set_setting(self, setting, value_str):
+        """Tries to parse the value string for a setting value and set it.
+
+        Args:
+            setting (str): Setting-name as a string.
+            value_str: The new value of the setting.
+        """
         if setting in self._settings:
             self._settings[setting].parse_and_set_value(value_str)
 
@@ -88,6 +118,12 @@ class Settings:
         return self._settings.__str__()
 
     def set_settings_from_dict(self, new_settings):
+        """Tries to set all the (setting, new value) pairs.
+
+        Args:
+            new_settings (dict): A dict with setting-name string pairs as keys
+                and new values as value.
+        """
         if not new_settings:
             return
 
@@ -95,12 +131,20 @@ class Settings:
             self.parse_and_set_setting(setting, value)
 
     def _sanitize_operand(self, operand):
+        """Returns a sanitized operand between 2-1000. Defaults to 10
+        """
         return operand if (2 <= operand <= 1000) else 10
 
     def _sanitize_timelimit(self, timelimit):
+        """Returns a sanitized timelimit between 100-100000. Defaults to 10000.
+        """
         return timelimit if (100 <= timelimit <= 100000) else 10000
 
     def _sanitize_boolean(self, timer):
+        """Returns a sanitized 'boolean'-value (actually just an int) with value 0 or 1.
+
+        Defaults to 0.
+        """
         return timer if (0 <= timer <= 1) else 0
 
     def __eq__(self, other):
