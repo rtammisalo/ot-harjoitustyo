@@ -6,8 +6,8 @@ from ui.exercises import MultiplicationView, DivisionView, AdditionView, \
 from ui.settings import SettingsView
 from ui.base import BaseView
 import ui.constants as ui_constants
-from services.main_service import InvalidPasswordException, InvalidUserException
-from repositories.user_repository import CriticalDatabaseError
+from services.main_service import InvalidPasswordException, InvalidUserException, \
+    CriticalDatabaseError
 
 
 class UI:

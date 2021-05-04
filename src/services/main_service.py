@@ -1,6 +1,5 @@
 import re
 from services.arithmetic_service import ArithmeticService
-from repositories.user_repository import CriticalDatabaseError
 
 
 class InvalidPasswordException(Exception):
@@ -8,6 +7,10 @@ class InvalidPasswordException(Exception):
 
 
 class InvalidUserException(Exception):
+    pass
+
+
+class CriticalDatabaseError(Exception):
     pass
 
 

@@ -2,10 +2,7 @@ import sqlite3
 from entities.user import User
 from config import Config
 from repositories.settings_repository import SettingsRepository
-
-
-class CriticalDatabaseError(Exception):
-    pass
+from services.main_service import CriticalDatabaseError
 
 
 class UserRepository:
