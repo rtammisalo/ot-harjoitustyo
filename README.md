@@ -6,6 +6,7 @@ Tällä hetkellä on vielä toteuttamatta vain erillinen keypad vastaamiseen alk
 
 ## Asennusohjeet
 
+Aja komento projektin juuressa:
 ```bash
 poetry install
 ```
@@ -34,6 +35,10 @@ poetry run invoke lint
 ```
 
 ## Releases
+
+### Release 2 (viikko 6)
+[Release 2](https://github.com/rtammisalo/ot-harjoitustyo/releases/tag/viikko6)
+
 ### Release 1 (viikko 5)
 [Release 1](https://github.com/rtammisalo/ot-harjoitustyo/releases/tag/viikko5)
 
