@@ -14,7 +14,7 @@ class TestArithmeticService(unittest.TestCase):
         settings = Settings()
         settings.set_setting(settings.MULTIPLY_OPERAND1_MIN, 100)
         settings.set_setting(settings.MULTIPLY_OPERAND1_MAX, 9)
-        settings.set_setting(settings.MULTIPLY_OPERAND2_MIN, 9)
+        settings.set_setting(settings.MULTIPLY_OPERAND2_MIN, 10)
         settings.set_setting(settings.MULTIPLY_OPERAND2_MAX, 9)
         self.assertEqual(100, settings.get_setting(
             settings.MULTIPLY_OPERAND1_MIN))
