@@ -20,12 +20,12 @@ Alla kuvassa piirrettynä kevyt luonnos sovelluksen graafisesta käyttöliittym�
   - Tilillä on nimi ja salasana (Toteutettu aikaisemmin)
 - Käyttäjä joutuu kirjautumaan sisään omalla tilillään (Toteutettu aikaisemmin)
   - Kirjautuessaan sisään käyttäjä voi avautuvasta näkymästä valita:
-    1. Yhteenlaskuharjoituksia (Tehty)
-    2. Vähennyslaskuharjoituksia (Tehty)
+    1. Yhteenlaskuharjoituksia (Toteutettu aikaisemmin)
+    2. Vähennyslaskuharjoituksia (Toteutettu aikaisemmin)
     3. Kertolaskuharjoituksia (Toteutettu aikaisemmin)
-    4. Jakolaskuharjoituksia (Tehty)
-    5. Satunnaisharjoituksia
-  - Harjoitusnäkymissä käyttäjä voi ennen harjoittelun alkua muuttaa harjoituksen asetuksia, esim. kuinka monta numeroa operandeissa on tai antaa harjoitukselle aikaraja. (Tehty)
+    4. Jakolaskuharjoituksia (Toteutettu aikaisemmin)
+    5. Satunnaisharjoituksia (Tehty + asetukset asetusnäkymään)
+  - Harjoitusnäkymissä käyttäjä voi ennen harjoittelun alkua muuttaa harjoituksen asetuksia, esim. kuinka monta numeroa operandeissa on tai antaa harjoitukselle aikaraja. (Toteutettu aikaisemmin)
   - Harjoituksiin vastataan joko näppäimistöllä tai hiirellä (ikkunaan piirretään vastaamista varten pieni keypad) (Näppäimistöllä vastaaminen toteutettu)
 
 ## Mahdollisia lisäominaisuuksia
