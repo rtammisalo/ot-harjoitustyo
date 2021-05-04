@@ -20,5 +20,5 @@
 | 1.5.2021  | 3    | Refaktorointia, uuden satunnaisharjoitusnäkymän toteutusta |
 | 2.5.2021  | 4    | Uuden satunnaisharjoitusnäkymän toteutusta, asetusnäkymän tekemistä uudelle harjoitukselle, muokattu hieman käyttöliittymän ulkoasua |
 | 3.5.2021  | 2    | Docstringien kirjoittamista |
-| 4.5.2021  | 4    | Dokumentointia ja ArithmeticServicen testikeissien toteutusta |
-| yhteensä  | 68  | |
+| 4.5.2021  | 5    | Dokumentointia ja ArithmeticServicen testikeissien toteutusta |
+| yhteensä  | 69  | |
