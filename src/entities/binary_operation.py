@@ -4,6 +4,7 @@ import decimal
 class BinaryOperation:
     """A base binary operation class inherited by the actual operation classes.
     """
+
     def __init__(self, operand1, operand2):
         """Sets the operands.
         """
