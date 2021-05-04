@@ -2,7 +2,7 @@
 ## Sovellus
 Sovellus on aritmetiikan harjoitustyökalu. Käyttäjä voi harjoitella kerto-, jako-, yhteen- ja vähennyslaskuja satunnaisilla tehtävillä. Käyttäjä voi myös muuttaa tehtävien asetuksia. Käyttäjällä on oma tili ja tilillä henkilökohtaiset asetustiedostot eri harjoituksiin.
 
-Tällä hetkellä on vielä toteuttamatta vain satunnaisharjoittelu alkuperäisestä määrittelydokumentista.
+Tällä hetkellä on vielä toteuttamatta vain erillinen keypad vastaamiseen alkuperäisestä määrittelydokumentista.
 
 ## Asennusohjeet
 
@@ -12,7 +12,7 @@ poetry install
 
 ## Käyttöohjeet
 
-Ohjelma käyttää tietokantaa käyttäjien tallentamiseen. Aja ensin  `build` komento. 
+Ohjelma käyttää tietokantaa käyttäjien tallentamiseen. Uuden tietokannan voi halutessaan luoda ajamalla komento:
 ```bash
 poetry run invoke build
 ```
@@ -38,6 +38,10 @@ poetry run invoke lint
 [Release 1](https://github.com/rtammisalo/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Dokumentaatio
+
+### Käyttöohje
+[Käyttöohje](dokumentaatio/kayttoohje.md)
+
 ### Määrittelydokumentti
 [Vaatimusmäärittely](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
