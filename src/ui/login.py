@@ -35,7 +35,7 @@ class LoginView(BaseView):
 
         self._username_entry = ttk.Entry(master=self._frame)
         self._username_entry.bind("<Return>", lambda event: self._login())
-        self._password_entry = ttk.Entry(master=self._frame)
+        self._password_entry = ttk.Entry(master=self._frame, show="*")
         self._password_entry.bind("<Return>", lambda event: self._login())
 
         login_button = ttk.Button(

@@ -11,9 +11,13 @@ class CreateUserView(BaseView):
         self._init_frame()
 
     def _create_user_handler(self):
-        self._login_handler(self._username_entry.get(), self._password_entry.get(),
-                            self._main_service.create,
-                            self._show_error_message)
+        if self._password_entry.get() == self._password_second_entry.get():
+            self._login_handler(self._username_entry.get(), self._password_entry.get(),
+                                self._main_service.create,
+                                self._show_error_message)
+        else:
+            self._show_error_message(
+                "Passwords are not the same")
 
     def _show_error_message(self, message):
         self._error_message.set(message)
@@ -28,15 +32,20 @@ class CreateUserView(BaseView):
             master=self._frame, text="Create new user")
 
         username_entry_label = ttk.Label(
-            master=self._frame, text="Enter new username")
+            master=self._frame, text="Enter new username:")
         password_entry_label = ttk.Label(
-            master=self._frame, text="Enter new password")
+            master=self._frame, text="Enter new password:")
+        password_second_entry_label = ttk.Label(
+            master=self._frame, text="Re-enter password:")
 
         self._username_entry = ttk.Entry(master=self._frame)
         self._username_entry.bind(
             "<Return>", lambda event: self._create_user_handler())
-        self._password_entry = ttk.Entry(master=self._frame)
+        self._password_entry = ttk.Entry(master=self._frame, show="*")
         self._password_entry.bind(
+            "<Return>", lambda event: self._create_user_handler())
+        self._password_second_entry = ttk.Entry(master=self._frame, show="*")
+        self._password_second_entry.bind(
             "<Return>", lambda event: self._create_user_handler())
 
         self._error_message = StringVar(self._frame)
@@ -52,10 +61,14 @@ class CreateUserView(BaseView):
 
         frame_header_label.grid(sticky=constants.N, pady=(5, 15))
         username_entry_label.grid(sticky=constants.W, padx=5)
-        self._username_entry.grid(pady=(0, 10), padx=10)
+        self._username_entry.grid(sticky=constants.W, pady=(0, 10), padx=10)
         password_entry_label.grid(sticky=constants.W, padx=5)
-        self._password_entry.grid(pady=(0, 20), padx=10)
+        self._password_entry.grid(sticky=constants.W, pady=(0, 20), padx=10)
+        password_second_entry_label.grid(sticky=constants.W, padx=5)
+        self._password_second_entry.grid(
+            sticky=constants.W, pady=(0, 20), padx=10)
         create_button.grid(sticky=constants.EW, pady=5, padx=5)
         back_button.grid(sticky=constants.EW, pady=5, padx=5)
+        self._frame.grid_columnconfigure(0, weight=1, minsize=200)
 
         self._username_entry.focus()
