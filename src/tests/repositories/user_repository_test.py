@@ -1,4 +1,3 @@
-import os
 import unittest
 from database import Database
 from repositories.user_repository import UserRepository
@@ -27,14 +26,15 @@ class TestUserRepository(unittest.TestCase):
         user = self._user_repository.create_user("newuser", "newpassword")
         self.assertIsNotNone(user)
         self.assertEqual("newuser", user.username)
-        self.assertEqual("newpassword", user.password)
+        self.assertTrue(user.verify_password("newpassword"))
 
     def test_can_find_existing_user(self):
         user = self._user_repository.get_user(
             TestUserRepository.TEST_USER_NAME)
         self.assertIsNotNone(user)
         self.assertEqual(TestUserRepository.TEST_USER_NAME, user.username)
-        self.assertEqual(TestUserRepository.TEST_USER_PASSWORD, user.password)
+        self.assertTrue(user.verify_password(
+            TestUserRepository.TEST_USER_PASSWORD))
 
     def test_cannot_find_nonexisting_user(self):
         user = self._user_repository.get_user("nosuchuser")

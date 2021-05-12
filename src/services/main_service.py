@@ -55,7 +55,7 @@ class MainService:
         if not user:
             raise InvalidUserException("No such user")
 
-        if user.password != password:
+        if not user.verify_password(password):
             raise InvalidPasswordException("Invalid password")
 
         self._logged_user = user
@@ -67,7 +67,7 @@ class MainService:
             self._logged_user = None
 
     def _sanitize_username(self, username):
-        """Checks if the given username fits accepted length.
+        """Checks if the given username fits accepted length and character constraints.
 
         Accepted usernames can only contain 3-12 characters with numbers
         and upper/lowercase letters.
@@ -90,6 +90,25 @@ class MainService:
 
         return username.lower()
 
+    def _check_password_validity(self, password):
+        """Checks whether the password fits accepted length and character constraints.
+
+        Accepted passwords can only contain 3-20 characters with no empty spaces.
+
+        Args:
+            password (str): Password string from the user.
+
+        Raises:
+            InvalidPasswordException: Raised when the password is too long/short or
+                contains illegal characters.
+        """
+        if not password or len(password) < 3 or len(password) > 20:
+            raise InvalidPasswordException("Password is too short or too long")
+
+        if re.match("\\s+", password):
+            raise InvalidPasswordException(
+                "Password containts empty spaces")
+
     def create(self, username, password):
         """Tries to create a new user, add it to the repository and set it as logged-in.
 
@@ -106,9 +125,7 @@ class MainService:
             InvalidUserException: The username was already in use.
         """
         username = self._sanitize_username(username)
-
-        if not password or len(password) < 3 or len(password) > 20:
-            raise InvalidPasswordException("Password is too short or too long")
+        self._check_password_validity(password)
 
         try:
             user = self._user_repository.create_user(username, password)

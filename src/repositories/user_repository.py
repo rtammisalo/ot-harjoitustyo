@@ -67,7 +67,7 @@ class UserRepository:
         try:
             cursor = self._database.connection.cursor()
             cursor.execute("insert into Users (username, password) values (?, ?)",
-                           (username, password))
+                           (username, User.create_password_hash(password)))
 
             self._database.connection.commit()
 
