@@ -21,4 +21,5 @@
 | 2.5.2021  | 4    | Uuden satunnaisharjoitusnäkymän toteutusta, asetusnäkymän tekemistä uudelle harjoitukselle, muokattu hieman käyttöliittymän ulkoasua |
 | 3.5.2021  | 2    | Docstringien kirjoittamista |
 | 4.5.2021  | 5    | Dokumentointia ja ArithmeticServicen testikeissien toteutusta |
-| yhteensä  | 69  | |
+| 12.5.2021 | 3    | Muutin salasanojen entryt näyttämään pelkkiä tähtimerkkejä. Lisäsin myös salasanoille hashauksen ja suolauksen käyttäen ulkoista kirjastoa 'passlib'. |
+| yhteensä  | 72  | |
