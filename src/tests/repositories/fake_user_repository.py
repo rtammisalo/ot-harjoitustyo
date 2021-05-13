@@ -1,5 +1,6 @@
 from entities.user import User
 
+
 class FakeUserRepository:
     def __init__(self):
         self._users = {}
@@ -12,7 +13,7 @@ class FakeUserRepository:
         if username in self._users:
             return None
 
-        new_user = User(username, User.create_password_hash(password), len(self._users), None)
+        new_user = User(username, password, len(self._users), None)
         self._users[username] = new_user
         return new_user
 
@@ -21,3 +22,9 @@ class FakeUserRepository:
 
     def settings_saved(self):
         return self._settings_saved
+
+    def verify_password(self, user, password):
+        if user.password_hash == password:
+            return True
+
+        return False

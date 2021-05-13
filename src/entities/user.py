@@ -1,6 +1,3 @@
-from passlib.hash import pbkdf2_sha256
-
-
 class User:
     """A small container class for Users.
     """
@@ -10,7 +7,7 @@ class User:
 
         Args:
             username (str): User's name.
-            password (str): User's password.
+            password_hash: User's password hash.
             id_number (int): User's id number.
             settings (Settings): User's settings.
         """
@@ -24,19 +21,10 @@ class User:
         """Returns User's username as a string."""
         return self.__username
 
-    def verify_password(self, password):
-        """Verifies if the given password is the password of the user.
-
-        Args:
-            password (str): Password string given by user.
-
-        Returns:
-            boolean: Returns True if the password is correct, False otherwise.
-        """
-        try:
-            return pbkdf2_sha256.verify(password, self.__password_hash)
-        except (TypeError, ValueError):
-            return False
+    @property
+    def password_hash(self):
+        """Return User's password hash."""
+        return self.__password_hash
 
     @property
     def id_number(self):
@@ -47,9 +35,3 @@ class User:
     def settings(self):
         """Returns User's settings as a Settings-object."""
         return self.__settings
-
-    @staticmethod
-    def create_password_hash(password):
-        """Returns a password hash for storing.
-        """
-        return pbkdf2_sha256.hash(password)

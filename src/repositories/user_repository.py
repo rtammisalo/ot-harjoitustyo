@@ -1,4 +1,5 @@
 import sqlite3
+from passlib.hash import pbkdf2_sha256
 from entities.user import User
 from config import Config
 from repositories.settings_repository import SettingsRepository
@@ -64,10 +65,12 @@ class UserRepository:
             User: Returns a fully formed User-object with settings.
             None: Returns None if the username is already in use.
         """
+        password_hash = self._create_password_hash(password)
+
         try:
             cursor = self._database.connection.cursor()
             cursor.execute("insert into Users (username, password) values (?, ?)",
-                           (username, User.create_password_hash(password)))
+                           (username, password_hash))
 
             self._database.connection.commit()
 
@@ -98,3 +101,23 @@ class UserRepository:
             return
 
         self._settings_repository.save_user_settings(user)
+
+    def _create_password_hash(self, password):
+        """Returns a password hash for storing.
+        """
+        return pbkdf2_sha256.hash(password)
+
+    def verify_password(self, user, password):
+        """Verifies if the given password is the same as the password of the user.
+
+        Args:
+            user (User): User object.
+            password (str): Password string given by user.
+
+        Returns:
+            boolean: Returns True if the password is correct, False otherwise.
+        """
+        try:
+            return pbkdf2_sha256.verify(password, user.password_hash)
+        except (TypeError, ValueError):
+            return False
