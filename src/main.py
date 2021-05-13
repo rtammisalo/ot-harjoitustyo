@@ -18,7 +18,7 @@ def main():
 
     gui = UI(window, MainService(UserRepository(database)))
     gui.start()
-    window.geometry("350x350")
+    window.geometry("350x500")
     window.mainloop()
 
 

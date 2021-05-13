@@ -2,6 +2,7 @@ from tkinter import ttk, constants
 from ui.base import BaseView
 from ui.components.exercise_frame import ExerciseFrame
 from ui.components.exercise_results_frame import ExerciseResultsFrame
+from ui.components.keypad_frame import KeypadFrame
 from ui.components.timer_frame import TimerFrame
 
 
@@ -33,7 +34,7 @@ class BaseExerciseView(BaseView):
         self._results_frame.set_answer_timer(
             self._timer_frame.get_elapsed_time())
         self._init_question()
-        self._exercise_frame.clear_answer_field()
+        self._exercise_frame.clear_answer_entry()
 
     def _init_frame(self, header, use_timer, time_limit):
         self._frame = ttk.Frame(master=self._root)
@@ -45,6 +46,9 @@ class BaseExerciseView(BaseView):
         self._init_question()
         self._results_frame = ExerciseResultsFrame(self._frame)
 
+        keypad_frame = KeypadFrame(
+            self._frame, self._exercise_frame.answer_entry, self._answer_handler)
+
         answer_button = ttk.Button(
             master=self._frame, text="Answer", command=self._answer_handler)
         back_button = ttk.Button(
@@ -54,6 +58,7 @@ class BaseExerciseView(BaseView):
         self._exercise_frame.frame.grid(sticky=constants.EW, pady=5, padx=5)
         self._timer_frame.frame.grid(sticky=constants.EW, pady=5, padx=5)
         self._results_frame.frame.grid(sticky=constants.EW, pady=5, padx=5)
+        keypad_frame.frame.grid(sticky=constants.EW, pady=5, padx=5)
         answer_button.grid(sticky=constants.EW, pady=5, padx=5)
         back_button.grid(sticky=constants.EW, pady=(1, 5), padx=5)
 

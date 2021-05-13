@@ -21,11 +21,8 @@ class SettingsView(BaseView):
 
     def _init_frame(self):
         self._frame = ttk.Frame(master=self._root)
-        frame_header_label = ttk.Label(
-            master=self._frame,
-            text="Settings")
 
-        canvas = Canvas(self._frame, height=260, width=270)
+        canvas = Canvas(self._frame, height=2000, width=270)
         scroller = ttk.Scrollbar(
             self._frame, orient=constants.VERTICAL, command=canvas.yview)
         canvas.configure(yscrollcommand=scroller.set)
@@ -49,17 +46,17 @@ class SettingsView(BaseView):
         back_button = ttk.Button(
             master=self._frame, text="Back", command=self._show_exercises)
 
-        frame_header_label.grid(pady=10, padx=5)
-
         for frame in self._settings_frames:
             frame.frame.grid(sticky=constants.EW, pady=5, padx=5)
 
         canvas.create_window(
             (0, 0), window=settings_frame, anchor=constants.NW)
-        canvas.grid(row=0, column=0, sticky=constants.W, pady=5, padx=5)
+        canvas.grid(row=0, column=0, sticky=constants.NS, pady=5, padx=5)
         scroller.grid(row=0, column=1,
                       sticky=constants.NS, pady=5, padx=2)
         accept_button.grid(row=1, column=0, columnspan=2,
                            sticky=constants.EW, pady=5, padx=5)
         back_button.grid(row=2, column=0, columnspan=2,
                          sticky=constants.EW, pady=5, padx=5)
+
+        self._frame.rowconfigure(0, weight=1)
