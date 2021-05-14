@@ -60,6 +60,11 @@ class TestMainService(unittest.TestCase):
         with self.assertRaises(InvalidUserException):
             self._service.create("a", "password")
 
+
+    def test_cannot_create_user_with_spaces_in_password(self):
+        with self.assertRaises(InvalidPasswordException):
+            self._service.create("newuser", "p a ss")
+
     def test_cannot_create_user_with_small_password(self):
         with self.assertRaises(InvalidPasswordException):
             self._service.create("newuser", "a")

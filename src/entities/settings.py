@@ -1,4 +1,5 @@
-from entities.setting_value import SettingValue
+from entities.setting_value import OperandSettingValue, TimelimitSettingValue,\
+    BooleanSettingValue
 
 
 class Settings:
@@ -40,36 +41,36 @@ class Settings:
         """
         # These are the hard-coded default values that are used when even the default file
         # cannot be found.
-        self._settings = {self.MULTIPLY_OPERAND1_MIN: SettingValue(2, self._sanitize_operand),
-                          self.MULTIPLY_OPERAND2_MIN: SettingValue(2, self._sanitize_operand),
-                          self.MULTIPLY_OPERAND1_MAX: SettingValue(9, self._sanitize_operand),
-                          self.MULTIPLY_OPERAND2_MAX: SettingValue(9, self._sanitize_operand),
-                          self.MULTIPLY_TIMELIMIT: SettingValue(10000, self._sanitize_timelimit),
-                          self.MULTIPLY_TIMER: SettingValue(1, self._sanitize_boolean),
-                          self.DIVIDE_OPERAND1_MIN: SettingValue(2, self._sanitize_operand),
-                          self.DIVIDE_OPERAND2_MIN: SettingValue(2, self._sanitize_operand),
-                          self.DIVIDE_OPERAND1_MAX: SettingValue(9, self._sanitize_operand),
-                          self.DIVIDE_OPERAND2_MAX: SettingValue(9, self._sanitize_operand),
-                          self.DIVIDE_TIMELIMIT: SettingValue(10000, self._sanitize_timelimit),
-                          self.DIVIDE_TIMER: SettingValue(1, self._sanitize_boolean),
-                          self.ADD_OPERAND1_MIN: SettingValue(2, self._sanitize_operand),
-                          self.ADD_OPERAND2_MIN: SettingValue(2, self._sanitize_operand),
-                          self.ADD_OPERAND1_MAX: SettingValue(500, self._sanitize_operand),
-                          self.ADD_OPERAND2_MAX: SettingValue(500, self._sanitize_operand),
-                          self.ADD_TIMELIMIT: SettingValue(10000, self._sanitize_timelimit),
-                          self.ADD_TIMER: SettingValue(1, self._sanitize_boolean),
-                          self.SUB_OPERAND1_MIN: SettingValue(2, self._sanitize_operand),
-                          self.SUB_OPERAND2_MIN: SettingValue(2, self._sanitize_operand),
-                          self.SUB_OPERAND1_MAX: SettingValue(500, self._sanitize_operand),
-                          self.SUB_OPERAND2_MAX: SettingValue(500, self._sanitize_operand),
-                          self.SUB_TIMELIMIT: SettingValue(10000, self._sanitize_timelimit),
-                          self.SUB_TIMER: SettingValue(1, self._sanitize_boolean),
-                          self.RANDOM_USE_MULTIPLY: SettingValue(1, self._sanitize_boolean),
-                          self.RANDOM_USE_DIVIDE: SettingValue(1, self._sanitize_boolean),
-                          self.RANDOM_USE_ADD: SettingValue(1, self._sanitize_boolean),
-                          self.RANDOM_USE_SUB: SettingValue(1, self._sanitize_boolean),
-                          self.RANDOM_TIMELIMIT: SettingValue(10000, self._sanitize_timelimit),
-                          self.RANDOM_TIMER: SettingValue(1, self._sanitize_boolean), }
+        self._settings = {self.MULTIPLY_OPERAND1_MIN: OperandSettingValue(2),
+                          self.MULTIPLY_OPERAND2_MIN: OperandSettingValue(2),
+                          self.MULTIPLY_OPERAND1_MAX: OperandSettingValue(9),
+                          self.MULTIPLY_OPERAND2_MAX: OperandSettingValue(9),
+                          self.MULTIPLY_TIMELIMIT: TimelimitSettingValue(10000),
+                          self.MULTIPLY_TIMER: BooleanSettingValue(1),
+                          self.DIVIDE_OPERAND1_MIN: OperandSettingValue(2),
+                          self.DIVIDE_OPERAND2_MIN: OperandSettingValue(2),
+                          self.DIVIDE_OPERAND1_MAX: OperandSettingValue(9),
+                          self.DIVIDE_OPERAND2_MAX: OperandSettingValue(9),
+                          self.DIVIDE_TIMELIMIT: TimelimitSettingValue(10000),
+                          self.DIVIDE_TIMER: BooleanSettingValue(1),
+                          self.ADD_OPERAND1_MIN: OperandSettingValue(2),
+                          self.ADD_OPERAND2_MIN: OperandSettingValue(2),
+                          self.ADD_OPERAND1_MAX: OperandSettingValue(500),
+                          self.ADD_OPERAND2_MAX: OperandSettingValue(500),
+                          self.ADD_TIMELIMIT: TimelimitSettingValue(10000),
+                          self.ADD_TIMER: BooleanSettingValue(1),
+                          self.SUB_OPERAND1_MIN: OperandSettingValue(2),
+                          self.SUB_OPERAND2_MIN: OperandSettingValue(2),
+                          self.SUB_OPERAND1_MAX: OperandSettingValue(500),
+                          self.SUB_OPERAND2_MAX: OperandSettingValue(500),
+                          self.SUB_TIMELIMIT: TimelimitSettingValue(10000),
+                          self.SUB_TIMER: BooleanSettingValue(1),
+                          self.RANDOM_USE_MULTIPLY: BooleanSettingValue(1),
+                          self.RANDOM_USE_DIVIDE: BooleanSettingValue(1),
+                          self.RANDOM_USE_ADD: BooleanSettingValue(1),
+                          self.RANDOM_USE_SUB: BooleanSettingValue(1),
+                          self.RANDOM_TIMELIMIT: TimelimitSettingValue(10000),
+                          self.RANDOM_TIMER: BooleanSettingValue(1), }
 
     def get_settings_as_dict(self):
         """Returns settings as dict.
@@ -110,6 +111,9 @@ class Settings:
         Args:
             setting (str): Setting-name as a string.
             value_str: The new value of the setting.
+
+        Raises:
+            ValueError: The value could not be parsed.
         """
         if setting in self._settings:
             self._settings[setting].parse_and_set_value(value_str)
@@ -123,29 +127,15 @@ class Settings:
         Args:
             new_settings (dict): A dict with setting-name string pairs as keys
                 and new values as value.
+
+        Raises:
+            ValueError: One of the values could not be parsed.
         """
         if not new_settings:
             return
 
         for setting, value in new_settings.items():
             self.parse_and_set_setting(setting, value)
-
-    def _sanitize_operand(self, operand):
-        """Returns a sanitized operand between 2-1000. Defaults to 10
-        """
-        return operand if (2 <= operand <= 1000) else 10
-
-    def _sanitize_timelimit(self, timelimit):
-        """Returns a sanitized timelimit between 100-100000. Defaults to 10000.
-        """
-        return timelimit if (100 <= timelimit <= 100000) else 10000
-
-    def _sanitize_boolean(self, timer):
-        """Returns a sanitized 'boolean'-value (actually just an int) with value 0 or 1.
-
-        Defaults to 0.
-        """
-        return timer if (0 <= timer <= 1) else 0
 
     def __eq__(self, other):
         if self._settings == other._settings:

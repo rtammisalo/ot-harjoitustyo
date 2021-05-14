@@ -28,16 +28,26 @@ class TestSettingsRepository(unittest.TestCase):
         if os.path.exists(file):
             os.remove(file)
 
-    def _remove_files(self):
+    def _get_filepath(self, username):
         test_users_path = Config.USER_CSV_PATH
-        self._remove_file(os.path.join(
-            test_users_path, f"{self.TEST_USER_NAME}.csv"))
-        self._remove_file(os.path.join(
-            test_users_path, f"{self.TEST_NEW_USER_NAME}.csv"))
+        return os.path.join(test_users_path, f"{username}.csv")
+
+    def _remove_files(self):
+        self._remove_file(self._get_filepath(self.TEST_USER_NAME))
+        self._remove_file(self._get_filepath(self.TEST_NEW_USER_NAME))
         self._remove_file(Config.USER_DEFAULT_CSV_FILEPATH)
         self._remove_file(self._new_test_default_path)
 
     def test_created_settings_can_be_found(self):
+        settings = self._settings_repository.get_settings_by_username(
+            self.TEST_USER_NAME)
+        self.assertEqual(self._test_settings, settings)
+
+    def test_created_faulty_settings_are_not_loaded(self):
+        with open(self._get_filepath(self.TEST_USER_NAME), mode="a") as settings_file:
+            settings_file.write(f"{Settings.ADD_TIMELIMIT},5555,123")
+            settings_file.write("false_setting_name,123")
+
         settings = self._settings_repository.get_settings_by_username(
             self.TEST_USER_NAME)
         self.assertEqual(self._test_settings, settings)

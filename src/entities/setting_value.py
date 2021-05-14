@@ -1,20 +1,24 @@
 class SettingValue:
-    """A tiny wrapper class for setting values used by Settings.
+    """A tiny wrapper class for generic setting values used by Settings.
 
     Has the ability to parse and sanitize values.
     """
 
-    def __init__(self, value, sanitize):
-        """Initializes the SettingValue to a starting value and sanitizer-function.
+    def __init__(self, value):
+        """Initializes the SettingValue to a starting value.
 
         Args:
             value: Starting value.
-            sanitize (function): The sanitizer function should take a value and return
-                value that is within acceptable range or some other parameter.
         """
-        self._value = sanitize(value)
-        self._sanitize = sanitize
-        self._parse = int
+        self._value = self._sanitize(value)
+
+    def _parse(self, value):
+        """Parses the value. Raises ValueError if parsing fails.
+        """
+        return int(value)
+
+    def _sanitize(self, value):
+        return value
 
     @property
     def value(self):
@@ -38,3 +42,44 @@ class SettingValue:
             return True
 
         return False
+
+
+class OperandSettingValue(SettingValue):
+    """A class for holding operand-type values.
+    """
+    MIN_VALUE = 2
+    MAX_VALUE = 1000
+    DEFAULT_VALUE = 10
+
+    def _sanitize(self, value):
+        """Returns a sanitized operand value between 2-1000. Defaults to 10
+        """
+        return value if (self.MIN_VALUE <= value <= self.MAX_VALUE) else self.DEFAULT_VALUE
+
+
+class TimelimitSettingValue(SettingValue):
+    """A class for holding timelimit-type values.
+    """
+    MIN_VALUE = 100
+    MAX_VALUE = 100000
+    DEFAULT_VALUE = 10000
+
+    def _sanitize(self, value):
+        """Returns a sanitized timelimit between 100-100000. Defaults to 10000.
+        """
+        return value if (self.MIN_VALUE <= value <= self.MAX_VALUE) else self.DEFAULT_VALUE
+
+
+class BooleanSettingValue(SettingValue):
+    """A class for holding all boolean-type values.
+    """
+    MIN_VALUE = 0
+    MAX_VALUE = 1
+    DEFAULT_VALUE = 0
+
+    def _sanitize(self, value):
+        """Returns a sanitized 'boolean'-value (actually just an int) with value 0 or 1.
+
+        Defaults to 0.
+        """
+        return value if (self.MIN_VALUE <= value <= self.MAX_VALUE) else self.DEFAULT_VALUE

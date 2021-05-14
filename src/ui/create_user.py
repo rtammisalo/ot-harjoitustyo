@@ -17,7 +17,7 @@ class CreateUserView(BaseView):
                                 self._show_error_message)
         else:
             self._show_error_message(
-                "Passwords are not the same")
+                "Passwords mismatch")
 
     def _show_error_message(self, message):
         self._error_message.set(message)

@@ -105,9 +105,9 @@ class MainService:
         if not password or len(password) < 3 or len(password) > 20:
             raise InvalidPasswordException("Password is too short or too long")
 
-        if re.match("\\s+", password):
+        if re.match(".*\\s+.*", password):
             raise InvalidPasswordException(
-                "Password containts empty spaces")
+                "Password contains empty spaces")
 
     def create(self, username, password):
         """Tries to create a new user, add it to the repository and set it as logged-in.
