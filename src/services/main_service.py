@@ -138,9 +138,10 @@ class MainService:
         self._logged_user = user
 
     def save_settings(self):
-        """Saves the user's settings to the repository.
+        """Saves the current user's settings to the repository.
         """
-        self._user_repository.save_settings(self._logged_user)
+        if self._logged_user:
+            self._user_repository.save_settings(self._logged_user)
 
     def show_current_user(self):
         """Returns the current user, or None.
