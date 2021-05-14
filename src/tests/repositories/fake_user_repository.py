@@ -13,7 +13,7 @@ class FakeUserRepository:
         if username in self._users:
             return None
 
-        new_user = User(username, password, len(self._users), None)
+        new_user = User(username, password, None)
         self._users[username] = new_user
         return new_user
 

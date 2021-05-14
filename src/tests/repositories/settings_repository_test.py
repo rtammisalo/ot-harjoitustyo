@@ -90,7 +90,7 @@ class TestSettingsRepository(unittest.TestCase):
             self._create_user(username, settings))
 
     def _create_user(self, username, settings):
-        return User(username, "abc", 1, settings)
+        return User(username, "abc", settings)
 
     def _create_default_settings(self):
         changed_default_setting = Settings.SUB_TIMELIMIT
