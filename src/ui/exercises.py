@@ -3,6 +3,9 @@ from entities.settings import Settings
 
 
 class AdditionView(BaseExerciseView):
+    """A view for practicing additions.
+    """
+
     def __init__(self, window, main_service, show_exercises):
         super().__init__(window, main_service, show_exercises,
                          main_service.arithmetic.get_addition_question)
@@ -13,6 +16,9 @@ class AdditionView(BaseExerciseView):
 
 
 class DivisionView(BaseExerciseView):
+    """A view for practicing division.
+    """
+
     def __init__(self, window, main_service, show_exercises):
         super().__init__(window, main_service, show_exercises,
                          main_service.arithmetic.get_division_question)
@@ -23,6 +29,9 @@ class DivisionView(BaseExerciseView):
 
 
 class MultiplicationView(BaseExerciseView):
+    """A view for practicing multiplication.
+    """
+
     def __init__(self, window, main_service, show_exercises):
         super().__init__(window, main_service, show_exercises,
                          main_service.arithmetic.get_multiplication_question)
@@ -33,6 +42,9 @@ class MultiplicationView(BaseExerciseView):
 
 
 class SubstractionView(BaseExerciseView):
+    """A view for practicing substraction.
+    """
+
     def __init__(self, window, main_service, show_exercises):
         super().__init__(window, main_service, show_exercises,
                          main_service.arithmetic.get_substraction_question)
@@ -43,6 +55,9 @@ class SubstractionView(BaseExerciseView):
 
 
 class RandomView(BaseExerciseView):
+    """A view for practicing random exercises.
+    """
+
     def __init__(self, window, main_service, show_exercises):
         super().__init__(window, main_service, show_exercises,
                          main_service.arithmetic.get_random_question)

@@ -2,6 +2,10 @@ from tkinter import ttk, constants, IntVar
 
 
 class SettingsFrame:
+    """A base frame for organizing the different settings by group in one frame.
+
+    Not to be used as is. Inherited by classes in settings_frames.py, such as AdditionSettingsFrame.
+    """
     OP1MIN = 0
     OP2MIN = 1
     OP1MAX = 2
@@ -60,6 +64,11 @@ class SettingsFrame:
         entry.grid(row=row, column=1, sticky=constants.W, pady=(0, 5), padx=5)
 
     def set_entry_values(self, settings):
+        """Sets the entry values to show the current settings related to this frame.
+
+        Args:
+            settings (Settings): Settings-object of the user.
+        """
         self._operand1_min_entry.insert(
             0, settings.get_setting(self._keys[self.OP1MIN]))
         self._operand2_min_entry.insert(
@@ -73,6 +82,11 @@ class SettingsFrame:
             0, settings.get_setting(self._keys[self.TIMELIMIT]))
 
     def set_new_settings(self, settings):
+        """Tries to to set the contents of the entry fields as new settings values.
+
+        Args:
+            settings (Settings): Settings-object of the user.
+        """
         new_settings = {self._keys[self.OP1MIN]: self._operand1_min_entry.get(),
                         self._keys[self.OP2MIN]: self._operand2_min_entry.get(),
                         self._keys[self.OP1MAX]: self._operand1_max_entry.get(),

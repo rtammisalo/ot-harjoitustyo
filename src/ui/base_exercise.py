@@ -7,6 +7,12 @@ from ui.components.timer_frame import TimerFrame
 
 
 class BaseExerciseView(BaseView):
+    """This is the base for all the different exercise views. Not to be used as is.
+
+    Contains all the necessary component frames and methods needed. The inheriting class
+    need to call _init_frame()-method to finish creating the view.
+    """
+
     def __init__(self, window, main_service, show_exercises, generate_new_question):
         super().__init__(window, main_service)
         self._show_exercises = show_exercises
@@ -26,10 +32,10 @@ class BaseExerciseView(BaseView):
     def _answer_handler(self):
         if self._main_service.arithmetic.check_answer(
                 self._question, self._exercise_frame.get_user_answer()):
-            self._results_frame.set_answer_result("Correct")
+            self._results_frame.set_answer_result(True)
         else:
             self._results_frame.set_answer_result(
-                "Wrong", correct_answer=self._question.result())
+                False, correct_answer=self._question.result())
 
         self._results_frame.set_answer_timer(
             self._timer_frame.get_elapsed_time())

@@ -5,6 +5,11 @@ from ui.components.settings_frames import MultiplicationSettingsFrame, DivisionS
 
 
 class SettingsView(BaseView):
+    """A view for looking at and changing settings.
+
+    Saves settings through MainService. Uses all the different SettingsFrames as components.
+    """
+
     def __init__(self, window, main_service, show_exercises):
         super().__init__(window, main_service)
         self._show_exercises = show_exercises

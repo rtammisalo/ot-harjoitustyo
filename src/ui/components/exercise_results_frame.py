@@ -2,6 +2,12 @@ from tkinter import ttk, constants, StringVar
 
 
 class ExerciseResultsFrame:
+    """Frame-container class for displaying the results of the last answer in ExerciseView.
+
+    The results include correctness, possibly correct answer and time used.
+    Has methods needed to set the result and the timer.
+    """
+
     def __init__(self, root):
         self._root = root
         self.frame = None
@@ -40,7 +46,16 @@ class ExerciseResultsFrame:
         self.frame.grid_columnconfigure(1, weight=1, minsize=150)
 
     def set_answer_result(self, result, correct_answer=None):
-        self._answer_result_var.set(f"Result: {result}")
+        """Sets the answer result label to show the results of the last answer.
+
+        Args:
+            result (boolean): If the answer was correct or not.
+            correct_answer (optional): The correct answer.
+        """
+        if result:
+            self._answer_result_var.set("Result: Correct")
+        else:
+            self._answer_result_var.set("Result: Wrong")
 
         if correct_answer is not None:
             self._correct_answer_var.set(
@@ -54,6 +69,8 @@ class ExerciseResultsFrame:
         self._correct_answer_label.configure(style="Red.TLabel")
 
     def set_answer_timer(self, timer):
+        """Sets the timer result for the last answer.
+        """
         if timer == "":
             self._answer_timer_var.set("Time: ")
         else:

@@ -11,6 +11,10 @@ from services.main_service import InvalidPasswordException, InvalidUserException
 
 
 class UI:
+    """The main UI-class used by the program.
+
+    Ties all the different views together. Call start()-method to show the login-screen.
+    """
 
     def __init__(self, window, main_service):
         self._root = window
@@ -88,4 +92,6 @@ class UI:
         self._show_login_view()
 
     def start(self):
+        """Changes the window to show the login view for the user.
+        """
         self._show_login_view()

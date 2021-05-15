@@ -3,6 +3,13 @@ from tkinter import StringVar, ttk, constants
 
 
 class KeypadFrame:
+    """A keypad frame used for inputting answers without a keyboard.
+
+    The keypad starts out as hidden. Users can show it by clicking a button.
+
+    Attributes:
+        keypad_hidden: An attribute for deciding whether to show or hide the keypad.
+    """
     keypad_hidden = True
 
     def __init__(self, root, answer_entry, answer_handler):

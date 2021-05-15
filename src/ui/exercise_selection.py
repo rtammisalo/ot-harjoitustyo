@@ -4,6 +4,9 @@ from ui import constants as ui_constants
 
 
 class ExerciseSelectionView(BaseView):
+    """The view for selecting exercises or going to the settings-view.
+    """
+
     def __init__(self, window, main_service, logout_handler, exercise_handlers, settings_handler):
         super().__init__(window, main_service)
         self._logout_handler = logout_handler

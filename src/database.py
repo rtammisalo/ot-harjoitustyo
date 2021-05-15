@@ -5,8 +5,11 @@ from config import Config
 class Database:
     """Tiny class meant to handle database connections to the sqlite3 database.
     """
+
     def __init__(self):
         """Inits the database connection.
+
+        Call init_database() to (re)create the database before use, if needed.
         """
         self.connection = sqlite3.connect(Config.DB_FILEPATH)
         # Use the convenient row factory results

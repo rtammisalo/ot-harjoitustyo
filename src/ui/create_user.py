@@ -4,6 +4,9 @@ from ui import constants as ui_constants
 
 
 class CreateUserView(BaseView):
+    """The implementation for the view seen when the user tries to create a new user account.
+    """
+
     def __init__(self, window, main_service, login_handlers):
         super().__init__(window, main_service)
         self._show_login = login_handlers[ui_constants.LOGIN_VIEW]

@@ -7,6 +7,8 @@ from config import Config
 
 
 def main():
+    """Call this to start the program.
+    """
     window = Tk()
     window.title("Arithmetician")
     database = Database()

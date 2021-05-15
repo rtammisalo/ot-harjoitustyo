@@ -3,6 +3,9 @@ from ui.components.settings_frame import SettingsFrame
 
 
 class AdditionSettingsFrame(SettingsFrame):
+    """A frame containing all settings related to addition exercises.
+    """
+
     def __init__(self, root, settings):
         super().__init__(root, "Addition Settings")
         self._init_default_frame()
@@ -16,6 +19,9 @@ class AdditionSettingsFrame(SettingsFrame):
 
 
 class DivisionSettingsFrame(SettingsFrame):
+    """A frame containing all settings related to division exercises.
+    """
+
     def __init__(self, root, settings):
         super().__init__(root, "Division Settings")
         self._init_default_frame()
@@ -29,6 +35,9 @@ class DivisionSettingsFrame(SettingsFrame):
 
 
 class MultiplicationSettingsFrame(SettingsFrame):
+    """A frame containing all settings related to Multiplication exercises.
+    """
+
     def __init__(self, root, settings):
         super().__init__(root, "Multiplication Settings")
         self._init_default_frame()
@@ -42,6 +51,9 @@ class MultiplicationSettingsFrame(SettingsFrame):
 
 
 class SubstractionSettingsFrame(SettingsFrame):
+    """A frame containing all settings related to substraction exercises.
+    """
+
     def __init__(self, root, settings):
         super().__init__(root, "Substraction Settings")
         self._init_default_frame()
@@ -55,6 +67,9 @@ class SubstractionSettingsFrame(SettingsFrame):
 
 
 class RandomExerciseSettingsFrame(SettingsFrame):
+    """A frame containing all settings related to random exercises.
+    """
+
     def __init__(self, root, settings):
         super().__init__(root, "Random Exercise Settings")
         self._use_multiply_var = IntVar(self.frame)
@@ -87,6 +102,11 @@ class RandomExerciseSettingsFrame(SettingsFrame):
                        sticky=constants.W, pady=5, padx=5)
 
     def set_entry_values(self, settings):
+        """Sets entry values to settings-values.
+
+        Args:
+            settings (Settings): Settings-object of the user.
+        """
         self._use_multiply_var.set(
             settings.get_setting(settings.RANDOM_USE_MULTIPLY))
         self._use_divide_var.set(
@@ -98,6 +118,11 @@ class RandomExerciseSettingsFrame(SettingsFrame):
             0, settings.get_setting(settings.RANDOM_TIMELIMIT))
 
     def set_new_settings(self, settings):
+        """Tries to set the entry field contents as settings in the Settings-object.
+
+        Args:
+            settings (Settings): Settings-object of the user.
+        """
         new_settings = {settings.RANDOM_USE_MULTIPLY: self._use_multiply_var.get(),
                         settings.RANDOM_USE_DIVIDE: self._use_divide_var.get(),
                         settings.RANDOM_USE_ADD: self._use_add_var.get(),
