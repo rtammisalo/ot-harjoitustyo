@@ -33,7 +33,8 @@ class TestSettings(unittest.TestCase):
                 Settings.RANDOM_USE_MULTIPLY,
                 Settings.RANDOM_USE_DIVIDE,
                 Settings.RANDOM_USE_ADD,
-                Settings.RANDOM_USE_SUB]
+                Settings.RANDOM_USE_SUB,
+                Settings.HIDE_KEYPAD]
 
     def setUp(self):
         self._settings = Settings()

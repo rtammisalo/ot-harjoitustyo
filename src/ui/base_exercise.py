@@ -53,7 +53,8 @@ class BaseExerciseView(BaseView):
         self._results_frame = ExerciseResultsFrame(self._frame)
 
         keypad_frame = KeypadFrame(
-            self._frame, self._exercise_frame.answer_entry, self._answer_handler)
+            self._frame, self._main_service,
+            self._exercise_frame.answer_entry, self._answer_handler)
 
         answer_button = ttk.Button(
             master=self._frame, text="Answer", command=self._answer_handler)

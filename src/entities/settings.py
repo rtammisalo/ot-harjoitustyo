@@ -35,6 +35,7 @@ class Settings:
     RANDOM_USE_SUB = "random_use_sub"
     RANDOM_TIMER = "random_timer"
     RANDOM_TIMELIMIT = "random_timelimit"
+    HIDE_KEYPAD = "hide_keypad"
 
     def __init__(self):
         """Initializes the Settings object to default values. Safe to use as is.
@@ -70,7 +71,8 @@ class Settings:
                           self.RANDOM_USE_ADD: BooleanSettingValue(1),
                           self.RANDOM_USE_SUB: BooleanSettingValue(1),
                           self.RANDOM_TIMELIMIT: TimelimitSettingValue(10000),
-                          self.RANDOM_TIMER: BooleanSettingValue(1), }
+                          self.RANDOM_TIMER: BooleanSettingValue(1),
+                          self.HIDE_KEYPAD: BooleanSettingValue(1) }
 
     def get_settings_as_dict(self):
         """Returns settings as dict.

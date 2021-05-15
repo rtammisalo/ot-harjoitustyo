@@ -1,32 +1,33 @@
 import functools
 from tkinter import StringVar, ttk, constants
+from entities.settings import Settings
 
 
 class KeypadFrame:
     """A keypad frame used for inputting answers without a keyboard.
 
-    The keypad starts out as hidden. Users can show it by clicking a button.
+    By default the keypad starts out hidden. Users can show it by clicking a button.
 
     Attributes:
         keypad_hidden: An attribute for deciding whether to show or hide the keypad.
     """
-    keypad_hidden = True
 
-    def __init__(self, root, answer_entry, answer_handler):
+    def __init__(self, root, main_service, answer_entry, answer_handler):
         self._root = root
+        self._main_service = main_service
         self.frame = None
         self._answer_entry = answer_entry
         self.frame = ttk.Frame(
             master=self._root, borderwidth=2, relief="ridge")
         self._hide_keypad_var = StringVar(master=self.frame)
         hide_keypad_button = ttk.Button(
-            master=self.frame, textvariable=self._hide_keypad_var, command=self._show_keypad)
+            master=self.frame, textvariable=self._hide_keypad_var,
+            command=self._flip_keypad_state)
 
         self._init_keypad(answer_handler)
 
         hide_keypad_button.grid(sticky=constants.EW)
 
-        KeypadFrame.keypad_hidden = not KeypadFrame.keypad_hidden
         self._show_keypad()
 
         self.frame.grid_columnconfigure(0, weight=1, minsize=333)
@@ -77,15 +78,33 @@ class KeypadFrame:
             self._answer_entry.delete(characters - 1)
         self._answer_entry.focus()
 
-    def _show_keypad(self):
-        if KeypadFrame.keypad_hidden:
-            self._hide_keypad_var.set("Hide Keypad")
-            self.keypad.grid(sticky=constants.EW)
+    def _get_keypad_status(self):
+        return self._main_service.show_current_user().settings.get_setting(Settings.HIDE_KEYPAD)
+
+    def _set_keypad_status(self, new_state):
+        self._main_service.show_current_user().settings.set_setting(
+            Settings.HIDE_KEYPAD, new_state)
+        self._main_service.save_settings()
+
+    def _flip_keypad_state(self):
+        keypad_hidden = self._get_keypad_status()
+
+        if keypad_hidden == 1:
+            self._set_keypad_status(0)
         else:
+            self._set_keypad_status(1)
+
+        self._show_keypad()
+
+    def _show_keypad(self):
+        keypad_hidden = self._get_keypad_status()
+
+        if keypad_hidden == 1:
             self._hide_keypad_var.set("Show Keypad")
             self.keypad.grid_remove()
-
-        KeypadFrame.keypad_hidden = not KeypadFrame.keypad_hidden
+        else:
+            self._hide_keypad_var.set("Hide Keypad")
+            self.keypad.grid(sticky=constants.EW)
 
     def _clear_answer_entry(self):
         self._answer_entry.delete(0, constants.END)
