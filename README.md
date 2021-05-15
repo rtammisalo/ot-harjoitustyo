@@ -1,19 +1,19 @@
-# Ohjelmistotekniikan harjoitustyö
+# Ohjelmistotekniikan harjoitustyö: Aritmetiikan harjoitustyökalu
 ## Sovellus
-Sovellus on aritmetiikan harjoitustyökalu. Käyttäjä voi harjoitella kerto-, jako-, yhteen- ja vähennyslaskuja satunnaisilla tehtävillä. Käyttäjä voi myös muuttaa tehtävien asetuksia. Käyttäjällä on oma tili ja tilillä henkilökohtaiset asetustiedostot eri harjoituksiin.
-
-Tällä hetkellä on vielä toteuttamatta vain erillinen keypad vastaamiseen alkuperäisestä määrittelydokumentista.
+Sovellus on tarkoitettu aritmetiikan harjoitteluun. Käyttäjä voi harjoitella kerto-, jako-, yhteen- ja vähennyslaskuja satunnaisilla tehtävillä. Käyttäjä voi myös muuttaa tehtävien asetuksia. Käyttäjällä on oma tili ja tilillä henkilökohtaiset asetustiedostot eri harjoituksiin.
 
 ## Asennusohjeet
 
-Aja komento projektin juuressa:
+Asenna Poetry käyttämällä kurssin ohjeita: [Poetryn asennusohjeet](https://ohjelmistotekniikka-hy.github.io/python/poetry).
+
+Poetryn asentamisen jälkeen aja seuraava komento projektin juuressa:
 ```bash
 poetry install
 ```
 
 ## Käyttöohjeet
 
-Ohjelma käyttää tietokantaa käyttäjien tallentamiseen. Uuden tietokannan voi halutessaan luoda ajamalla komento:
+Ohjelma käyttää tietokantaa käyttäjien tallentamiseen. Jos olet käyttänyt aikaisempia versioita, tulee käyttäjän ensin luoda uusi tietokanta. Uuden tietokannan voi  luoda ajamalla komento:
 ```bash
 poetry run invoke build
 ```
@@ -28,6 +28,8 @@ Testaus ja testikattavuus:
 poetry run invoke test
 poetry run invoke coverage-report
 ```
+
+Tehty testikattavuusraportti löytyy projektin juuren alle luodun 'htmlcov' hakemiston 'index.html' tiedostosta.
 
 Pylint:
 ```bash
