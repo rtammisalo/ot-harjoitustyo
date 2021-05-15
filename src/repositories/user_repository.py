@@ -89,7 +89,8 @@ class UserRepository:
 
         user_settings = self._settings_repository.get_settings_by_username(
             row_result["username"])
-        return User(row_result["username"], row_result["password"], user_settings)
+        return User(row_result["username"], row_result["password"],
+                    user_settings, self._verify_password_hash)
 
     def save_settings(self, user):
         """Access method for saving the user settings using the settings repository.
@@ -107,17 +108,17 @@ class UserRepository:
         """
         return pbkdf2_sha256.hash(password)
 
-    def verify_password(self, user, password):
-        """Verifies if the given password is the same as the password of the user.
+    def _verify_password_hash(self, password_hash, password):
+        """Verifies that the given password is the same as the password of the user.
 
         Args:
-            user (User): User object.
+            password_hash: Hash string of the password to be verified against.
             password (str): Password string given by user.
 
         Returns:
             boolean: Returns True if the password is correct, False otherwise.
         """
         try:
-            return pbkdf2_sha256.verify(password, user.password_hash)
+            return pbkdf2_sha256.verify(password, password_hash)
         except (TypeError, ValueError):
             return False

@@ -55,7 +55,7 @@ class MainService:
         if not user:
             raise InvalidUserException("No such user")
 
-        if not self._user_repository.verify_password(user, password):
+        if not user.verify_password(password):
             raise InvalidPasswordException("Invalid password")
 
         self._logged_user = user

@@ -22,9 +22,3 @@ class FakeUserRepository:
 
     def settings_saved(self):
         return self._settings_saved
-
-    def verify_password(self, user, password):
-        if user.password_hash == password:
-            return True
-
-        return False
