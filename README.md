@@ -34,13 +34,11 @@ Pylint:
 poetry run invoke lint
 ```
 
-## Releases
+## Julkaisut
 
-### Release 2 (viikko 6)
-[Release 2](https://github.com/rtammisalo/ot-harjoitustyo/releases/tag/viikko6)
+[Release 2, viikko 6](https://github.com/rtammisalo/ot-harjoitustyo/releases/tag/viikko6)
 
-### Release 1 (viikko 5)
-[Release 1](https://github.com/rtammisalo/ot-harjoitustyo/releases/tag/viikko5)
+[Release 1, viikko 5](https://github.com/rtammisalo/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Dokumentaatio
 
