@@ -51,9 +51,12 @@ class SettingsRepository:
         """
         user_settings = Settings()
 
-        with open(settings_filepath) as settings_file:
-            reader = csv.reader(settings_file, delimiter=",")
-            user_settings = self._parse_settings(reader)
+        try:
+            with open(settings_filepath) as settings_file:
+                reader = csv.reader(settings_file, delimiter=",")
+                user_settings = self._parse_settings(reader)
+        except PermissionError:
+            print(f"Failed to read user settings: {settings_filepath}")
 
         return user_settings
 
