@@ -23,6 +23,6 @@
 | 4.5.2021  | 5    | Dokumentointia ja ArithmeticServicen testikeissien toteutusta |
 | 12.5.2021 | 3    | Muutin salasanojen entryt näyttämään pelkkiä tähtimerkkejä. Lisäsin myös salasanoille hashauksen ja suolauksen käyttäen ulkoista kirjastoa 'passlib'. |
 | 13.5.2021 | 6    | Lisäsin keypadin harjoitusnäkymiin ja muutin hieman skrollausta asetusnäkymästä. Refaktorointia ja loputonta vääntöä TkInterin kanssa. |
-| 14.5.2021 | 6    | Refaktorointia ja testien kirjoittamista. |
-| 15.5.2021 | 6    | Refaktorointia, testien kirjoittamista, docstringien kirjoittamista, testailua ja dokumentointia. |
-| yhteensä  | 90  | |
+| 14.5.2021 | 7    | Refaktorointia ja testien kirjoittamista. |
+| 15.5.2021 | 8    | Refaktorointia, testien kirjoittamista, docstringien kirjoittamista, testailua ja dokumentointia. |
+| yhteensä  | 93  | |
