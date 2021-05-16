@@ -38,14 +38,15 @@ poetry run invoke lint
 
 ## Julkaisut
 
-[Release 2, viikko 6](https://github.com/rtammisalo/ot-harjoitustyo/releases/tag/viikko6)
-
-[Release 1, viikko 5](https://github.com/rtammisalo/ot-harjoitustyo/releases/tag/viikko5)
+- [v1.0.0, lopullinen palatus](https://github.com/rtammisalo/ot-harjoitustyo/releases/tag/v1.0.0)
+- [Release 2, viikko 6](https://github.com/rtammisalo/ot-harjoitustyo/releases/tag/viikko6)
+- [Release 1, viikko 5](https://github.com/rtammisalo/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Dokumentaatio
 
 - [Käyttöohje](dokumentaatio/kayttoohje.md)
 - [Vaatimusmäärittely](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
-- [Tunnit](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/tunnit.md)
 - [Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
 - [Testausdokumentti](dokumentaatio/testaaminen.md)
+- [Tunnit](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/tunnit.md)
+
