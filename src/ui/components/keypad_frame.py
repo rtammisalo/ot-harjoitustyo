@@ -21,11 +21,10 @@ class KeypadFrame:
             answer_entry: A reference to the answer entry, used to input from keypad.
             answer_handler (function, no args): Called when the user wishes to answer.
         """
-        self._root = root
         self._main_service = main_service
         self._answer_entry = answer_entry
         self.frame = ttk.Frame(
-            master=self._root, borderwidth=2, relief="ridge")
+            master=root, borderwidth=2, relief="ridge")
         self._hide_keypad_var = StringVar(master=self.frame)
         hide_keypad_button = ttk.Button(
             master=self.frame, textvariable=self._hide_keypad_var,

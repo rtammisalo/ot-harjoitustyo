@@ -13,8 +13,7 @@ class SettingEntryFrame():
             root: The SettingsFrame this entry belongs to.
             setting_name (str): Name of the setting.
         """
-        self._root = root
-        self.frame = ttk.Frame(master=self._root)
+        self.frame = ttk.Frame(master=root)
         header_label = ttk.Label(master=self.frame, text=f"{setting_name}:")
         self._entry_var = StringVar(master=self.frame)
         self._entry_var.trace_add(mode="write", callback=self._edit_callback)
