@@ -10,6 +10,13 @@ class TimerFrame:
     """
 
     def __init__(self, root, use_timer, time_limit):
+        """Inits the timer frame.
+
+        Args:
+            root: Frame of the exercise view.
+            use_timer (int): 1 if you wish to use the timer, 0 otherwise.
+            time_limit (int): The time limit to be used.
+        """
         self._root = root
         self._time_limit = time_limit / 1000
         self.frame = ttk.Frame(master=root, borderwidth=2, relief="ridge")

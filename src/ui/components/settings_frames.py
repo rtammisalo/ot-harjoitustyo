@@ -7,6 +7,12 @@ class AdditionSettingsFrame(SettingsFrame):
     """
 
     def __init__(self, root, settings):
+        """Inits the addition exercise settings frame.
+
+        Args:
+            root: Settings view.
+            settings (Settings): User settings-object.
+        """
         super().__init__(root, "Addition Settings")
         self._init_default_frame()
         self._keys = {self.OP1MIN: settings.ADD_OPERAND1_MIN,
@@ -23,6 +29,12 @@ class DivisionSettingsFrame(SettingsFrame):
     """
 
     def __init__(self, root, settings):
+        """Inits the division exercise settings frame.
+
+        Args:
+            root: Settings view.
+            settings (Settings): User settings-object.
+        """
         super().__init__(root, "Division Settings")
         self._init_default_frame()
         self._keys = {self.OP1MIN: settings.DIVIDE_OPERAND1_MIN,
@@ -39,6 +51,12 @@ class MultiplicationSettingsFrame(SettingsFrame):
     """
 
     def __init__(self, root, settings):
+        """Inits the multiplication exercise settings frame.
+
+        Args:
+            root: Settings view.
+            settings (Settings): User settings-object.
+        """
         super().__init__(root, "Multiplication Settings")
         self._init_default_frame()
         self._keys = {self.OP1MIN: settings.MULTIPLY_OPERAND1_MIN,
@@ -55,6 +73,12 @@ class SubstractionSettingsFrame(SettingsFrame):
     """
 
     def __init__(self, root, settings):
+        """Inits the substraction exercise settings frame.
+
+        Args:
+            root: Settings view.
+            settings (Settings): User settings-object.
+        """
         super().__init__(root, "Substraction Settings")
         self._init_default_frame()
         self._keys = {self.OP1MIN: settings.SUB_OPERAND1_MIN,
@@ -71,6 +95,12 @@ class RandomExerciseSettingsFrame(SettingsFrame):
     """
 
     def __init__(self, root, settings):
+        """Inits the random exercises settings frame.
+
+        Args:
+            root: Settings view.
+            settings (Settings): User settings-object.
+        """
         super().__init__(root, "Random Exercise Settings")
         self._use_multiply_var = IntVar(self.frame)
         self._use_divide_var = IntVar(self.frame)

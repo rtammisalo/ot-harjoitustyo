@@ -11,6 +11,14 @@ class SettingsView(BaseView):
     """
 
     def __init__(self, window, main_service, show_exercises):
+        """Inits the settings view.
+
+        Args:
+            window: Main UI.
+            main_service (MainService): MainService of the program.
+            show_exercises (function): Used to change view back to showing the exercise
+                selection list.
+        """
         super().__init__(window, main_service)
         self._show_exercises = show_exercises
         self._init_frame()

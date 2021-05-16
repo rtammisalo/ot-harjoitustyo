@@ -7,6 +7,12 @@ class SettingEntryFrame():
     """
 
     def __init__(self, root, setting_name):
+        """Inits the SettingEntryFrame.
+
+        Args:
+            root: The SettingsFrame this entry belongs to.
+            setting_name (str): Name of the setting.
+        """
         self._root = root
         self.frame = ttk.Frame(master=self._root)
         header_label = ttk.Label(master=self.frame, text=f"{setting_name}:")

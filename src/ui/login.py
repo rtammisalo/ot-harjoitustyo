@@ -10,6 +10,13 @@ class LoginView(BaseView):
     """
 
     def __init__(self, window, main_service, login_handlers):
+        """Inits the login view.
+
+        Args:
+            window: Main UI.
+            main_service (MainService): MainService of the program.
+            login_handlers (dict of functions): Contains the functions needed to change views.
+        """
         super().__init__(window, main_service)
         self._show_create_new_user = login_handlers[ui_constants.CREATE_USER_VIEW]
         self._login_handler = login_handlers[ui_constants.LOGIN_HANDLER]

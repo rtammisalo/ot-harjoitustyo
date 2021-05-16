@@ -17,6 +17,13 @@ class UI:
     """
 
     def __init__(self, window, main_service):
+        """Initializes the Main UI.
+
+        Args:
+            window: Main window of the program.
+            main_service (MainService): The MainService of the program. Used to access
+                repositories and business logic.
+        """
         self._root = window
         # Set to avoid checking for None.
         self._view = BaseView(window, main_service)

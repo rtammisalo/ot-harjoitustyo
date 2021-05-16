@@ -15,6 +15,12 @@ class SettingsFrame:
     TIMELIMIT = 5
 
     def __init__(self, root, header):
+        """Inits the frame.
+
+        Args:
+            root: Frame of the settings view.
+            header (str): Name of this settings frame.
+        """
         self._keys = {}
         self.frame = ttk.Frame(master=root, borderwidth=2, relief="ridge")
         self._operand1_min_entry = None

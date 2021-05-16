@@ -14,6 +14,14 @@ class BaseExerciseView(BaseView):
     """
 
     def __init__(self, window, main_service, show_exercises, generate_new_question):
+        """Inits the view.
+
+        Args:
+            window: Main UI.
+            main_service (MainService): MainService of the program.
+            show_exercises (function): Switches to show exercise listing as a view.
+            generate_new_question (function): Called to generate a new exercise question.
+        """
         super().__init__(window, main_service)
         self._show_exercises = show_exercises
         self._generate_new_question = generate_new_question

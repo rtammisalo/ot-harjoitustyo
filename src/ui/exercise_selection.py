@@ -8,6 +8,16 @@ class ExerciseSelectionView(BaseView):
     """
 
     def __init__(self, window, main_service, logout_handler, exercise_handlers, settings_handler):
+        """Inits the Exercise selecting view.
+
+        Args:
+            window: Main UI.
+            main_service (MainService): MainService of the program.
+            logout_handler (function): Called when the user wishes to log out.
+            exercise_handlers (dict of functions): Contains the view changing functions for
+                selecting the exercise.
+            settings_handler (function): Called when the user wishes to change settings.
+        """
         super().__init__(window, main_service)
         self._logout_handler = logout_handler
         self._exercise_handlers = exercise_handlers

@@ -8,6 +8,13 @@ class CreateUserView(BaseView):
     """
 
     def __init__(self, window, main_service, login_handlers):
+        """Inits the user creation view.
+
+        Args:
+            window: Main UI.
+            main_service (MainService): The MainService of the program.
+            login_handlers (dict of login handling functions): Used to change views for the user.
+        """
         super().__init__(window, main_service)
         self._show_login = login_handlers[ui_constants.LOGIN_VIEW]
         self._login_handler = login_handlers[ui_constants.LOGIN_HANDLER]

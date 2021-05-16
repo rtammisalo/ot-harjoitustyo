@@ -9,6 +9,12 @@ class ExerciseFrame:
     """
 
     def __init__(self, root, answer_handler):
+        """Inits the exercise question/answer frame component.
+
+        Args:
+            root: frame of the exercise view.
+            answer_handler (function, no args): Called when the user wishes to answer.
+        """
         self._root = root
         self.frame = None
         self._exercise_question_var = None

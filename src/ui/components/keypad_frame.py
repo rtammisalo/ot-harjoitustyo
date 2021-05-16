@@ -13,6 +13,14 @@ class KeypadFrame:
     """
 
     def __init__(self, root, main_service, answer_entry, answer_handler):
+        """Inits the keypad for use.
+
+        Args:
+            root: Frame of the exercise view.
+            main_service (MainService): A reference to the MainService.
+            answer_entry: A reference to the answer entry, used to input from keypad.
+            answer_handler (function, no args): Called when the user wishes to answer.
+        """
         self._root = root
         self._main_service = main_service
         self._answer_entry = answer_entry

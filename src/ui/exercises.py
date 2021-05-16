@@ -7,6 +7,13 @@ class AdditionView(BaseExerciseView):
     """
 
     def __init__(self, window, main_service, show_exercises):
+        """Inits the addition exercise view.
+
+        Args:
+            window: Main UI.
+            main_service (MainService): The MainService of the program.
+            show_exercises (function): Called when switching view to show exercise selection.
+        """
         super().__init__(window, main_service, show_exercises,
                          main_service.arithmetic.get_addition_question)
         user = main_service.show_current_user()
@@ -20,6 +27,13 @@ class DivisionView(BaseExerciseView):
     """
 
     def __init__(self, window, main_service, show_exercises):
+        """Inits the division exercise view.
+
+        Args:
+            window: Main UI.
+            main_service (MainService): The MainService of the program.
+            show_exercises (function): Called when switching view to show exercise selection.
+        """
         super().__init__(window, main_service, show_exercises,
                          main_service.arithmetic.get_division_question)
         user = main_service.show_current_user()
@@ -33,6 +47,13 @@ class MultiplicationView(BaseExerciseView):
     """
 
     def __init__(self, window, main_service, show_exercises):
+        """Inits the multiplication exercise view.
+
+        Args:
+            window: Main UI.
+            main_service (MainService): The MainService of the program.
+            show_exercises (function): Called when switching view to show exercise selection.
+        """
         super().__init__(window, main_service, show_exercises,
                          main_service.arithmetic.get_multiplication_question)
         user = main_service.show_current_user()
@@ -46,6 +67,13 @@ class SubstractionView(BaseExerciseView):
     """
 
     def __init__(self, window, main_service, show_exercises):
+        """Inits the substraction exercise view.
+
+        Args:
+            window: Main UI.
+            main_service (MainService): The MainService of the program.
+            show_exercises (function): Called when switching view to show exercise selection.
+        """
         super().__init__(window, main_service, show_exercises,
                          main_service.arithmetic.get_substraction_question)
         user = main_service.show_current_user()
@@ -59,6 +87,13 @@ class RandomView(BaseExerciseView):
     """
 
     def __init__(self, window, main_service, show_exercises):
+        """Inits the random exercises view.
+
+        Args:
+            window: Main UI.
+            main_service (MainService): The MainService of the program.
+            show_exercises (function): Called when switching view to show exercise selection.
+        """
         super().__init__(window, main_service, show_exercises,
                          main_service.arithmetic.get_random_question)
         user = main_service.show_current_user()
