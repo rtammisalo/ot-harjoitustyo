@@ -19,7 +19,7 @@ Alla sekvenssikaavio käyttäjän onnistuneesta sisäänkirjautumisesta.
 
 ## Käyttöliittymän kuvaus
 
-Käyttöliittymä noudattaa referenssisovelluksen tapaista käytäntöä käyttöliittymän kanssa. Jokainen käyttöliittymän näkymä on toteutettu erillisinä luokkinaan, joiden vaihdosta lopulta huolehtii UI-luokka. Kaikki UI-luokat käsittelevät sovelluslogiikkaa vain MainService-luokan kautta.
+Käyttöliittymä noudattaa referenssisovelluksen tapaista käytäntöä käyttöliittymän kanssa. Jokainen käyttöliittymän näkymä on toteutettu erillisinä luokkinaan, joiden vaihdosta lopulta huolehtii UI-luokka. Yritin toteuttaa UI-luokat niin, että ne käsittelevät sovelluslogiikkaa vain MainService-luokan kautta.
 
 Harjoitusnäkymissä (luokat AdditionView, SubstractionView, DivisionView, MultiplicationView ja RandomView määritelty [exercises.py](../src/ui/exercises.py)) käyttäjälle luodaan MainServicen kautta saadulla ArithmeticServicellä käyttäjän asetuksien mukaisia tehtäviä käyttäen sen metodeja, esim. [get_addition_question](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/src/services/arithmetic_service.py#L59).
 
