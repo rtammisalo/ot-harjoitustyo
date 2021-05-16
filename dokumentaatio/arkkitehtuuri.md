@@ -38,7 +38,7 @@ Koko sovelluksen sitoo yhteen services-paketin MainService, jonka avulla voidaan
 
 ## Tiedon talletus
 
-Sovelluksen tallennustiedon käsittely tehdään referenssisovelluksestakin tutuilla Repository-patternilla. Repositories-pakkauksen UserRepository tarjoaa mahdollisuuden tallentaa käyttäjän tiedot (nimi, salasana ja id) SQLite-tietokantaan. Koska jokaiseen käyttäjään liittyy sovelluksessa olennaisesti hänen oma henkilökohtainen asetustiedosto, on UserRepositoryllä myös viittaus SettingsRepositoryyn. SettingsRepositoryn tehtävänä on lukea hakemistosta käyttäjän oma .csv-tyyppinen asetustiedosto ja myös tarvittaessa tallettaa uudet asetukset tiedostoon.
+Sovelluksen tallennustiedon käsittely tehdään referenssisovelluksestakin tutuilla Repository-patternilla. Repositories-pakkauksen UserRepository tarjoaa mahdollisuuden tallentaa käyttäjän tiedot (nimi, salasana ja id) SQLite-tietokantaan. Salasanat talletetaan tietokantaan käyttäen Passlibin hashausta eli ne eivät talletu selkokielisinä. Koska jokaiseen käyttäjään liittyy sovelluksessa olennaisesti hänen oma henkilökohtainen asetustiedosto, on UserRepositoryllä myös viittaus SettingsRepositoryyn. SettingsRepositoryn tehtävänä on lukea hakemistosta käyttäjän oma .csv-tyyppinen asetustiedosto ja myös tarvittaessa tallettaa uudet asetukset tiedostoon.
 
 Riippuvuuksien injektoinnin ansioista voidaan testauksessa käyttää stub-repositoryjä, kun halutaan vain yksikkötestata vain yhden luokan toiminnallisuutta.
 
