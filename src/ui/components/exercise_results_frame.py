@@ -9,6 +9,8 @@ class ExerciseResultsFrame:
     """
 
     def __init__(self, root):
+        """Inits the exercise results component frame.
+        """
         self._root = root
         self.frame = None
         self._answer_result_var = None
@@ -33,7 +35,7 @@ class ExerciseResultsFrame:
         self._correct_answer_label = ttk.Label(
             master=self.frame, textvariable=self._correct_answer_var)
         self._set_answer_text_red()
-        self.set_answer_result("")
+        self._answer_result_var.set("Result:")
 
         answer_result_label.grid(
             row=0, column=0, sticky=constants.W, pady=5, padx=5)
@@ -45,23 +47,20 @@ class ExerciseResultsFrame:
         self.frame.grid_columnconfigure(0, weight=1, minsize=150)
         self.frame.grid_columnconfigure(1, weight=1, minsize=150)
 
-    def set_answer_result(self, result, correct_answer=None):
+    def set_answer_result(self, result_correct, correct_answer=None):
         """Sets the answer result label to show the results of the last answer.
 
         Args:
-            result (boolean): If the answer was correct or not.
+            result_correct (boolean): If the answer was correct or not.
             correct_answer (optional): The correct answer.
         """
-        if result:
+        if result_correct:
             self._answer_result_var.set("Result: Correct")
-        else:
+            self._correct_answer_var.set("")
+        elif correct_answer:
             self._answer_result_var.set("Result: Wrong")
-
-        if correct_answer is not None:
             self._correct_answer_var.set(
                 f"Correct answer: {correct_answer:.3f}")
-        else:
-            self._correct_answer_var.set("")
 
     def _set_answer_text_red(self):
         style = ttk.Style()

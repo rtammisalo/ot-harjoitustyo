@@ -10,14 +10,18 @@ class SettingValue:
         Args:
             value: Starting value.
         """
-        self._value = self._sanitize(value)
+        self._value = self.sanitize(value)
 
-    def _parse(self, value):
+    @staticmethod
+    def parse(value):
         """Parses the value. Raises ValueError if parsing fails.
         """
         return int(value)
 
-    def _sanitize(self, value):
+    @classmethod
+    def sanitize(cls, value):
+        """Returns the value as is.
+        """
         return value
 
     @property
@@ -30,18 +34,24 @@ class SettingValue:
     def value(self, new_value):
         """Sanitizes and sets the value.
         """
-        self._value = self._sanitize(new_value)
+        self._value = self.sanitize(new_value)
 
     def parse_and_set_value(self, new_value_str):
         """Parses and sanitizes the new value string.
         """
-        self.value = self._parse(new_value_str)
+        self.value = self.parse(new_value_str)
 
     def __eq__(self, other):
         if self._value == other._value:
             return True
 
         return False
+
+    @staticmethod
+    def _verify_value_inside_range(value, min_value, max_value, default_value):
+        if min_value <= value <= max_value:
+            return value
+        return default_value
 
 
 class OperandSettingValue(SettingValue):
@@ -51,10 +61,12 @@ class OperandSettingValue(SettingValue):
     MAX_VALUE = 1000
     DEFAULT_VALUE = 10
 
-    def _sanitize(self, value):
+    @classmethod
+    def sanitize(cls, value):
         """Returns a sanitized operand value between 2-1000. Defaults to 10
         """
-        return value if (self.MIN_VALUE <= value <= self.MAX_VALUE) else self.DEFAULT_VALUE
+        return cls._verify_value_inside_range(value, cls.MIN_VALUE,
+                                              cls.MAX_VALUE, cls.DEFAULT_VALUE)
 
 
 class TimelimitSettingValue(SettingValue):
@@ -64,10 +76,12 @@ class TimelimitSettingValue(SettingValue):
     MAX_VALUE = 100000
     DEFAULT_VALUE = 10000
 
-    def _sanitize(self, value):
+    @classmethod
+    def sanitize(cls, value):
         """Returns a sanitized timelimit between 100-100000. Defaults to 10000.
         """
-        return value if (self.MIN_VALUE <= value <= self.MAX_VALUE) else self.DEFAULT_VALUE
+        return cls._verify_value_inside_range(value, cls.MIN_VALUE,
+                                              cls.MAX_VALUE, cls.DEFAULT_VALUE)
 
 
 class BooleanSettingValue(SettingValue):
@@ -77,9 +91,11 @@ class BooleanSettingValue(SettingValue):
     MAX_VALUE = 1
     DEFAULT_VALUE = 0
 
-    def _sanitize(self, value):
+    @classmethod
+    def sanitize(cls, value):
         """Returns a sanitized 'boolean'-value (actually just an int) with value 0 or 1.
 
         Defaults to 0.
         """
-        return value if (self.MIN_VALUE <= value <= self.MAX_VALUE) else self.DEFAULT_VALUE
+        return cls._verify_value_inside_range(value, cls.MIN_VALUE,
+                                              cls.MAX_VALUE, cls.DEFAULT_VALUE)

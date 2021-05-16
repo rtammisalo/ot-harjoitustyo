@@ -35,16 +35,14 @@ class SettingEntryFrame():
     def _edit_callback(self, *args):
         pass
 
-    def _check_entry_constraints(self, entry_string, min_value, max_value):
+    def _check_entry_constraints(self, entry_string, parser, sanitizer, min_value, max_value):
         try:
-            entry_value = int(entry_string)
-
-            if not min_value <= entry_value <= max_value:
+            entry_value = parser(entry_string)
+            if entry_value != sanitizer(entry_value):
                 self._show_error(
                     f"Value is not between {min_value}, {max_value}")
             else:
                 self._hide_error()
-
         except ValueError:
             self._show_error("Value is not an integer")
 
@@ -76,9 +74,11 @@ class OperandEntryFrame(SettingEntryFrame):
 
     def _edit_callback(self, *args):
         entry_string = self._entry_var.get()
-        min_value = OperandSettingValue.MIN_VALUE
-        max_value = OperandSettingValue.MAX_VALUE
-        self._check_entry_constraints(entry_string, min_value, max_value)
+        self._check_entry_constraints(entry_string,
+                                      OperandSettingValue.parse,
+                                      OperandSettingValue.sanitize,
+                                      OperandSettingValue.MIN_VALUE,
+                                      OperandSettingValue.MAX_VALUE)
 
 
 class TimelimitEntryFrame(SettingEntryFrame):
@@ -89,6 +89,8 @@ class TimelimitEntryFrame(SettingEntryFrame):
 
     def _edit_callback(self, *args):
         entry_string = self._entry_var.get()
-        min_value = TimelimitSettingValue.MIN_VALUE
-        max_value = TimelimitSettingValue.MAX_VALUE
-        self._check_entry_constraints(entry_string, min_value, max_value)
+        self._check_entry_constraints(entry_string,
+                                      TimelimitSettingValue.parse,
+                                      TimelimitSettingValue.sanitize,
+                                      TimelimitSettingValue.MIN_VALUE,
+                                      TimelimitSettingValue.MAX_VALUE)
