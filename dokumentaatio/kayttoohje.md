@@ -1,5 +1,7 @@
 # Käyttöohje
 
+Aloita käyttäminen tekemällä uusi kansio, jonne purat v1.0.0 julkaisun tai repositorion masterin zipin.
+
 ## Ohjelman asetukset
 
 Ohjelma tukee projektin juuressa olevaa .env tiedostoa. Käyttäjä voi halutessaan vaihtaa tietokannan, oletus asetustiedoston nimeä ja käyttäjien tallennushakemistoa.
