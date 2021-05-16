@@ -25,4 +25,5 @@
 | 13.5.2021 | 6    | Lisäsin keypadin harjoitusnäkymiin ja muutin hieman skrollausta asetusnäkymästä. Refaktorointia ja loputonta vääntöä TkInterin kanssa. |
 | 14.5.2021 | 7    | Refaktorointia ja testien kirjoittamista. |
 | 15.5.2021 | 8    | Refaktorointia, testien kirjoittamista, docstringien kirjoittamista, testailua ja dokumentointia. |
-| yhteensä  | 93  | |
+| 16.5.2021 | 10   | Dokumentointia, testien kirjoittamista, refaktorointia ja yleistä testausta eri alustoilla. |
+| yhteensä  | 102  | |
