@@ -17,9 +17,9 @@ Luonnoksesta poiketen toteutettiin asetuksien vaihtaminen erikseen valittavassa 
 
 ## Sovelluksen ominaisuudet
 
-- Käyttäjä voi luoda uuden tilin
-  - Tilillä on nimi, salasana ja oma asetustiedosto
-- Käyttäjä joutuu kirjautumaan sisään omalla tilillään
+- Käyttäjä voi luoda uuden tilin.
+  - Tilillä on nimi, salasana ja oma asetustiedosto. Käyttäjän tiedot (nimi ja Passlibillä hashattu salasana) talletetaan tietokantaan.
+- Käyttäjä joutuu kirjautumaan sisään omalla tilillään.
   - Kirjautuessaan sisään käyttäjä voi avautuvasta näkymästä valita:
     1. Yhteenlaskuharjoituksia
     2. Vähennyslaskuharjoituksia
