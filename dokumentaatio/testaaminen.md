@@ -33,3 +33,5 @@ Kokeilen myös `.env`-tiedostojen arvojen muuttamista.
 - Virtualdesktopin kautta ohjelma joskus jumahtaa näkymää vaihdettaessa vähäksi aikaa. En kyennyt toistamaan tätä ongelmaa kummallakaan toisista alustoista.
 - Asetuksia annettaessa ei ohjelma valita, jos jonkin laskuoperandin minimi on maksimia suurempi. Tämä ei kuitenkaan kaada ohjelmaa ja se lasketaan vain tilanteeksi, missä minimi on maksimi.
 - Jos käyttäjä ei valitse yhtään satunnaisharjoitusmuotoa, niin tällöin annetaan kaikkia harjoituksia satunnaisesti satunnaisharjoittelunäkymässä.
+- Jos käyttäjä antaa väärän asetuksen, niin ohjelma antaa kuitenkin tallentaa asetukset Accept-napilla. Tämä ei kuitenkaan johda virhetilaan, sillä huonon asetuksen tilalle asetetaan automaattisesti default-asetus. Muutos näkyy, kun käyttäjä palaa takaisin asetus-sivulle.
+- Asetuksia selaillessa ei voi käyttää hiiren rullaa. (!)
