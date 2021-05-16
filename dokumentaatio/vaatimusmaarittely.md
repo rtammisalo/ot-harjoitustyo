@@ -27,7 +27,7 @@ Luonnoksesta poiketen toteutettiin asetuksien vaihtaminen erikseen valittavassa 
     4. Jakolaskuharjoituksia
     5. Satunnaisharjoituksia
     6. Tehdä muutoksia harjoituksien asetuksiin (operandien suuruudet, ajastimen käyttö, aikaraja)
-  - Harjoituksiin vastataan joko näppäimistöllä tai hiirellä (ikkunaan piirretään vastaamista varten pieni keypad)
+  - Harjoituksiin vastataan joko näppäimistöllä tai hiirellä (ikkunaan piirretään vastaamista varten pieni keypad). Harjoituksissa on myös mahdollista käyttää ajastusta.
 
 ## Mahdollisia lisäominaisuuksia
 - Admin-tili, joka voi tutkia kaikkien käyttäjien tietoja tai tuhota tilejä
