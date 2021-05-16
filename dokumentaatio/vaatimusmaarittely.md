@@ -13,7 +13,7 @@ Alla kuvassa piirrettynä kevyt luonnos sovelluksen graafisesta käyttöliittym�
 
 ![Luonnos](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/uiluonnos.png)
 
-Luonnoksesta poiketen toteutettiin asetuksien vaihtaminen erillisessä asetusnäkymässä.
+Luonnoksesta poiketen toteutettiin asetuksien vaihtaminen erikseen valittavassa asetusnäkymässä.
 
 ## Sovelluksen ominaisuudet
 
