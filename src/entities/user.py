@@ -26,11 +26,6 @@ class User:
         return self.__username
 
     @property
-    def password_hash(self):
-        """Return User's password hash."""
-        return self.__password_hash
-
-    @property
     def settings(self):
         """Returns User's settings as a Settings-object."""
         return self.__settings
