@@ -2,7 +2,7 @@
 
 ## Haarakattavuus
 
-![Haarakattavuusraportti](dokumentaatio/kuvat/coverage.png)
+![Haarakattavuusraportti](kuvat/coverage.png)
 
 Haarakattavuusraporttiin ei otettu mukaan komentoriviltä ajettavia `src/build.py`- ja `src/main.py`-, `__init__.py`-tiedostoja, eikä testejä tai käyttöliittymäluokkia.
 
