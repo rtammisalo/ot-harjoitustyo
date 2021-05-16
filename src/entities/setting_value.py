@@ -63,10 +63,12 @@ class OperandSettingValue(SettingValue):
 
     @classmethod
     def sanitize(cls, value):
-        """Returns a sanitized operand value between 2-1000. Defaults to 10
+        """Returns a sanitized operand value between 2-1000.
+
+        Defaults to 10.
         """
         return cls._get_value_inside_range(value, cls.MIN_VALUE,
-                                              cls.MAX_VALUE, cls.DEFAULT_VALUE)
+                                           cls.MAX_VALUE, cls.DEFAULT_VALUE)
 
 
 class TimelimitSettingValue(SettingValue):
@@ -78,10 +80,12 @@ class TimelimitSettingValue(SettingValue):
 
     @classmethod
     def sanitize(cls, value):
-        """Returns a sanitized timelimit between 100-100000. Defaults to 10000.
+        """Returns a sanitized timelimit between 100-100000.
+
+        Defaults to 10000.
         """
         return cls._get_value_inside_range(value, cls.MIN_VALUE,
-                                              cls.MAX_VALUE, cls.DEFAULT_VALUE)
+                                           cls.MAX_VALUE, cls.DEFAULT_VALUE)
 
 
 class BooleanSettingValue(SettingValue):
@@ -98,4 +102,4 @@ class BooleanSettingValue(SettingValue):
         Defaults to 0.
         """
         return cls._get_value_inside_range(value, cls.MIN_VALUE,
-                                              cls.MAX_VALUE, cls.DEFAULT_VALUE)
+                                           cls.MAX_VALUE, cls.DEFAULT_VALUE)

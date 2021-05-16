@@ -35,7 +35,7 @@ class SettingsView(BaseView):
     def _init_frame(self):
         self._frame = ttk.Frame(master=self._root)
 
-        canvas = Canvas(self._frame, height=2000, width=270)
+        canvas = Canvas(self._frame, height=1500, width=270)
         scroller = ttk.Scrollbar(
             self._frame, orient=constants.VERTICAL, command=canvas.yview)
         canvas.configure(yscrollcommand=scroller.set)
