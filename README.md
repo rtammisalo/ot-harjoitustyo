@@ -44,14 +44,8 @@ poetry run invoke lint
 
 ## Dokumentaatio
 
-### Käyttöohje
-[Käyttöohje](dokumentaatio/kayttoohje.md)
-
-### Määrittelydokumentti
-[Vaatimusmäärittely](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
-
-### Tuntikirjanpito
-[Tunnit](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/tunnit.md)
-
-### Arkkitehtuuri
-[Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
+- [Käyttöohje](dokumentaatio/kayttoohje.md)
+- [Vaatimusmäärittely](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+- [Tunnit](https://github.com/rtammisalo/ot-harjoitustyo/blob/master/dokumentaatio/tunnit.md)
+- [Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
+- [Testausdokumentti](dokumentaatio/testaaminen.md)
