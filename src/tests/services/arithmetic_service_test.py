@@ -1,7 +1,8 @@
 import unittest
 from services.arithmetic_service import ArithmeticService
 from entities.settings import Settings
-from entities.operations import DivisionOperation, MultiplicationOperation
+from entities.operations import DivisionOperation, MultiplicationOperation, \
+    AdditionOperation, SubstractionOperation
 
 
 class TestArithmeticService(unittest.TestCase):
@@ -95,11 +96,14 @@ class TestArithmeticService(unittest.TestCase):
         self.assertTrue(op1_min <= int(parts[0]) <= op1_max)
         self.assertTrue(op2_min <= int(parts[1]) <= op2_max)
 
-    def test_generated_random_question_is_multiplication_when_none_selected(self):
+    def test_generated_random_question_when_none_are_selected(self):
         settings = Settings()
         settings.set_settings_from_dict({settings.RANDOM_USE_ADD: 0,
                                          settings.RANDOM_USE_DIVIDE: 0,
                                          settings.RANDOM_USE_MULTIPLY: 0,
                                          settings.RANDOM_USE_SUB: 0})
         operation = self._arithmetic.get_random_question(settings)
-        self.assertTrue(isinstance(operation, MultiplicationOperation))
+        self.assertTrue(isinstance(operation, MultiplicationOperation) or
+                        isinstance(operation, DivisionOperation) or
+                        isinstance(operation, AdditionOperation) or
+                        isinstance(operation, SubstractionOperation))

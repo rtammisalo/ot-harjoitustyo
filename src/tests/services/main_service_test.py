@@ -100,7 +100,7 @@ class TestMainService(unittest.TestCase):
         database.init_database()
         main_service = MainService(UserRepository(database))
         main_service.create(TestMainService.TEST_USER_NAME,
-                                  TestMainService.TEST_USER_PASSWORD)
+                            TestMainService.TEST_USER_PASSWORD)
         user = main_service.show_current_user()
         self.assertNotEqual(user.settings.get_setting(
             user.settings.ADD_TIMELIMIT), 5555)

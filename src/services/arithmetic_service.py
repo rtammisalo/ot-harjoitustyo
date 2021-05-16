@@ -106,7 +106,7 @@ class ArithmeticService:
 
         Returns:
             list: A list of new questions to select randomly from. If no question types allowed
-                in the settings, returns a multiplication operation in the list.
+                in the settings, returns all operations in the list.
         """
         questions = []
 
@@ -124,6 +124,9 @@ class ArithmeticService:
 
         if len(questions) == 0:
             questions.append(self.get_multiplication_question(settings))
+            questions.append(self.get_division_question(settings))
+            questions.append(self.get_addition_question(settings))
+            questions.append(self.get_substraction_question(settings))
 
         return questions
 
