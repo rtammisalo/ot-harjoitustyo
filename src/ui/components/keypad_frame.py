@@ -15,7 +15,6 @@ class KeypadFrame:
     def __init__(self, root, main_service, answer_entry, answer_handler):
         self._root = root
         self._main_service = main_service
-        self.frame = None
         self._answer_entry = answer_entry
         self.frame = ttk.Frame(
             master=self._root, borderwidth=2, relief="ridge")

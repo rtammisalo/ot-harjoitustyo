@@ -81,25 +81,30 @@ class RandomExerciseSettingsFrame(SettingsFrame):
 
     def _init_frame(self):
         self._init_radio_button("Multiplication", self._use_multiply_var, 1)
-        self._init_radio_button("Division", self._use_divide_var, 3)
-        self._init_radio_button("Addition", self._use_add_var, 5)
-        self._init_radio_button("Substraction", self._use_sub_var, 7)
-        self._init_timer_fields(9)
+        self._init_radio_button("Division", self._use_divide_var, 2)
+        self._init_radio_button("Addition", self._use_add_var, 3)
+        self._init_radio_button("Substraction", self._use_sub_var, 4)
+        self._init_timer_fields(5)
 
     def _init_radio_button(self, label_text, button_var, row):
-        label = ttk.Label(master=self.frame, text=f"{label_text}:")
+        radio_frame = ttk.Frame(master=self.frame)
+        label = ttk.Label(master=radio_frame, text=f"{label_text}:")
         radio_on = ttk.Radiobutton(
-            master=self.frame, text="On", variable=button_var, value=1)
+            master=radio_frame, text="On", variable=button_var, value=1)
         radio_off = ttk.Radiobutton(
-            master=self.frame, text="Off", variable=button_var, value=0)
+            master=radio_frame, text="Off", variable=button_var, value=0)
 
         button_var.set(0)
 
-        label.grid(row=row, sticky=constants.W, pady=5, padx=5)
-        radio_on.grid(row=row + 1, column=0,
+        label.grid(row=0, sticky=constants.W, pady=5, padx=5)
+        radio_on.grid(row=1, column=0,
                       sticky=constants.W, pady=5, padx=5)
-        radio_off.grid(row=row + 1, column=1,
+        radio_off.grid(row=1, column=1,
                        sticky=constants.W, pady=5, padx=5)
+
+        radio_frame.columnconfigure(0, minsize=120)
+        radio_frame.columnconfigure(1, minsize=70)
+        radio_frame.grid(row=row, sticky=constants.W)
 
     def set_entry_values(self, settings):
         """Sets entry values to settings-values.
@@ -114,8 +119,8 @@ class RandomExerciseSettingsFrame(SettingsFrame):
         self._use_add_var.set(settings.get_setting(settings.RANDOM_USE_ADD))
         self._use_sub_var.set(settings.get_setting(settings.RANDOM_USE_SUB))
         self._timer_var.set(settings.get_setting(settings.RANDOM_TIMER))
-        self._timer_entry.insert(
-            0, settings.get_setting(settings.RANDOM_TIMELIMIT))
+        self._timelimit_entry.set_entry(
+            settings.get_setting(settings.RANDOM_TIMELIMIT))
 
     def set_new_settings(self, settings):
         """Tries to set the entry field contents as settings in the Settings-object.
@@ -128,6 +133,6 @@ class RandomExerciseSettingsFrame(SettingsFrame):
                         settings.RANDOM_USE_ADD: self._use_add_var.get(),
                         settings.RANDOM_USE_SUB: self._use_sub_var.get(),
                         settings.RANDOM_TIMER: self._timer_var.get(),
-                        settings.RANDOM_TIMELIMIT: self._timer_entry.get()}
+                        settings.RANDOM_TIMELIMIT: self._timelimit_entry.get_entry()}
 
         self._set_settings_dict(settings, new_settings)

@@ -1,4 +1,5 @@
 from tkinter import ttk, constants, IntVar
+from ui.components.setting_entry_frame import OperandEntryFrame, TimelimitEntryFrame
 
 
 class SettingsFrame:
@@ -21,29 +22,28 @@ class SettingsFrame:
         self._operand1_max_entry = None
         self._operand2_max_entry = None
         self._timer_var = None
-        self._timer_entry = None
+        self._timelimit_entry = None
 
         header_label = ttk.Label(master=self.frame, text=header)
         header_label.grid(columnspan=2, sticky=constants.N, pady=5, padx=5)
         self.frame.columnconfigure(0, minsize=100)
-        self.frame.columnconfigure(1, minsize=100)
 
     def _init_default_frame(self):
-        self._operand1_min_entry = ttk.Entry(self.frame, width=10)
-        self._operand2_min_entry = ttk.Entry(self.frame, width=10)
-        self._operand1_max_entry = ttk.Entry(self.frame, width=10)
-        self._operand2_max_entry = ttk.Entry(self.frame, width=10)
+        self._operand1_min_entry = OperandEntryFrame(
+            self.frame, "Operand 1 Minimum")
+        self._operand2_min_entry = OperandEntryFrame(
+            self.frame, "Operand 2 Minimum")
+        self._operand1_max_entry = OperandEntryFrame(
+            self.frame, "Operand 1 Maximum")
+        self._operand2_max_entry = OperandEntryFrame(
+            self.frame, "Operand 2 Maximum")
 
         self._init_timer_fields(5)
 
-        self._set_label_entry_group(
-            "Operand 1 Minimum:", self._operand1_min_entry, row=1)
-        self._set_label_entry_group(
-            "Operand 2 Minimum:", self._operand2_min_entry, row=2)
-        self._set_label_entry_group(
-            "Operand 1 Maximum:", self._operand1_max_entry, row=3)
-        self._set_label_entry_group(
-            "Operand 2 Maximum:", self._operand2_max_entry, row=4)
+        self._operand1_min_entry.frame.grid(row=1, sticky=constants.W)
+        self._operand2_min_entry.frame.grid(row=2, sticky=constants.W)
+        self._operand1_max_entry.frame.grid(row=3, sticky=constants.W)
+        self._operand2_max_entry.frame.grid(row=4, sticky=constants.W)
 
     def _init_timer_fields(self, row):
         self._timer_var = IntVar(self.frame)
@@ -52,16 +52,11 @@ class SettingsFrame:
         timer_radio_off = ttk.Radiobutton(
             master=self.frame, text="Timer off", variable=self._timer_var, value=0)
         self._timer_var.set(0)
-        self._timer_entry = ttk.Entry(self.frame, width=10)
+        self._timelimit_entry = TimelimitEntryFrame(self.frame, "Timelimit")
 
-        self._set_label_entry_group("Timelimit:", self._timer_entry, row=row)
+        self._timelimit_entry.frame.grid(row=row, sticky=constants.W)
         timer_radio_on.grid(row=row + 1, sticky=constants.W, pady=5, padx=5)
         timer_radio_off.grid(row=row + 2, sticky=constants.W, pady=5, padx=5)
-
-    def _set_label_entry_group(self, label_text, entry, row):
-        label = ttk.Label(self.frame, text=label_text)
-        label.grid(row=row, column=0, sticky=constants.W, pady=(0, 5), padx=5)
-        entry.grid(row=row, column=1, sticky=constants.W, pady=(0, 5), padx=5)
 
     def set_entry_values(self, settings):
         """Sets the entry values to show the current settings related to this frame.
@@ -69,17 +64,17 @@ class SettingsFrame:
         Args:
             settings (Settings): Settings-object of the user.
         """
-        self._operand1_min_entry.insert(
-            0, settings.get_setting(self._keys[self.OP1MIN]))
-        self._operand2_min_entry.insert(
-            0, settings.get_setting(self._keys[self.OP2MIN]))
-        self._operand1_max_entry.insert(
-            0, settings.get_setting(self._keys[self.OP1MAX]))
-        self._operand2_max_entry.insert(
-            0, settings.get_setting(self._keys[self.OP2MAX]))
+        self._operand1_min_entry.set_entry(
+            settings.get_setting(self._keys[self.OP1MIN]))
+        self._operand2_min_entry.set_entry(
+            settings.get_setting(self._keys[self.OP2MIN]))
+        self._operand1_max_entry.set_entry(
+            settings.get_setting(self._keys[self.OP1MAX]))
+        self._operand2_max_entry.set_entry(
+            settings.get_setting(self._keys[self.OP2MAX]))
         self._timer_var.set(settings.get_setting(self._keys[self.TIMER]))
-        self._timer_entry.insert(
-            0, settings.get_setting(self._keys[self.TIMELIMIT]))
+        self._timelimit_entry.set_entry(
+            settings.get_setting(self._keys[self.TIMELIMIT]))
 
     def set_new_settings(self, settings):
         """Tries to to set the contents of the entry fields as new settings values.
@@ -87,12 +82,12 @@ class SettingsFrame:
         Args:
             settings (Settings): Settings-object of the user.
         """
-        new_settings = {self._keys[self.OP1MIN]: self._operand1_min_entry.get(),
-                        self._keys[self.OP2MIN]: self._operand2_min_entry.get(),
-                        self._keys[self.OP1MAX]: self._operand1_max_entry.get(),
-                        self._keys[self.OP2MAX]: self._operand2_max_entry.get(),
+        new_settings = {self._keys[self.OP1MIN]: self._operand1_min_entry.get_entry(),
+                        self._keys[self.OP2MIN]: self._operand2_min_entry.get_entry(),
+                        self._keys[self.OP1MAX]: self._operand1_max_entry.get_entry(),
+                        self._keys[self.OP2MAX]: self._operand2_max_entry.get_entry(),
                         self._keys[self.TIMER]: self._timer_var.get(),
-                        self._keys[self.TIMELIMIT]: self._timer_entry.get()}
+                        self._keys[self.TIMELIMIT]: self._timelimit_entry.get_entry()}
 
         self._set_settings_dict(settings, new_settings)
 
