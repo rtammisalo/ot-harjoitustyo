@@ -26,7 +26,7 @@ Luonnoksesta poiketen toteutettiin asetuksien vaihtaminen erikseen valittavassa 
     3. Kertolaskuharjoituksia
     4. Jakolaskuharjoituksia
     5. Satunnaisharjoituksia
-  - Harjoitusnäkymissä käyttäjä voi ennen harjoittelun alkua muuttaa harjoituksen asetuksia, esim. kuinka monta numeroa operandeissa on tai antaa harjoitukselle aikaraja.
+    6. Tehdä muutoksia harjoituksien asetuksiin (operandien suuruudet, ajastimen käyttö, aikaraja)
   - Harjoituksiin vastataan joko näppäimistöllä tai hiirellä (ikkunaan piirretään vastaamista varten pieni keypad)
 
 ## Mahdollisia lisäominaisuuksia
