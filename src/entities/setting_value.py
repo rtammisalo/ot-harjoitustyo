@@ -48,7 +48,7 @@ class SettingValue:
         return False
 
     @staticmethod
-    def _verify_value_inside_range(value, min_value, max_value, default_value):
+    def _get_value_inside_range(value, min_value, max_value, default_value):
         if min_value <= value <= max_value:
             return value
         return default_value
@@ -65,7 +65,7 @@ class OperandSettingValue(SettingValue):
     def sanitize(cls, value):
         """Returns a sanitized operand value between 2-1000. Defaults to 10
         """
-        return cls._verify_value_inside_range(value, cls.MIN_VALUE,
+        return cls._get_value_inside_range(value, cls.MIN_VALUE,
                                               cls.MAX_VALUE, cls.DEFAULT_VALUE)
 
 
@@ -80,7 +80,7 @@ class TimelimitSettingValue(SettingValue):
     def sanitize(cls, value):
         """Returns a sanitized timelimit between 100-100000. Defaults to 10000.
         """
-        return cls._verify_value_inside_range(value, cls.MIN_VALUE,
+        return cls._get_value_inside_range(value, cls.MIN_VALUE,
                                               cls.MAX_VALUE, cls.DEFAULT_VALUE)
 
 
@@ -97,5 +97,5 @@ class BooleanSettingValue(SettingValue):
 
         Defaults to 0.
         """
-        return cls._verify_value_inside_range(value, cls.MIN_VALUE,
+        return cls._get_value_inside_range(value, cls.MIN_VALUE,
                                               cls.MAX_VALUE, cls.DEFAULT_VALUE)
